@@ -56,6 +56,7 @@ namespace ASICamera_demo
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.save_exp_time_button = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.button_autoexp_save = new System.Windows.Forms.Button();
             this.manual_restart_button = new System.Windows.Forms.Button();
             this.manual_file_name = new System.Windows.Forms.Label();
@@ -94,6 +95,12 @@ namespace ASICamera_demo
             this.capture_config_label = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.bt_save_copy = new System.Windows.Forms.Button();
+            this.bt_mono_next = new System.Windows.Forms.Button();
+            this.bt_mono_confirm = new System.Windows.Forms.Button();
+            this.bt_open_monometer = new System.Windows.Forms.Button();
+            this.ud_mono_wavelength = new System.Windows.Forms.NumericUpDown();
             this.tb_beta = new System.Windows.Forms.TextBox();
             this.ud_get_video_count = new System.Windows.Forms.NumericUpDown();
             this.ud_timer = new System.Windows.Forms.NumericUpDown();
@@ -253,10 +260,6 @@ namespace ASICamera_demo
             this.ud_meter_exptime = new System.Windows.Forms.NumericUpDown();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
-            this.groupBox20 = new System.Windows.Forms.GroupBox();
-            this.ud_mono_wavelength = new System.Windows.Forms.NumericUpDown();
-            this.bt_open_monometer = new System.Windows.Forms.Button();
-            this.bt_mono_confirm = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -293,6 +296,8 @@ namespace ASICamera_demo
             this.tableLayoutPanel35.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ud_mono_wavelength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ud_get_video_count)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ud_timer)).BeginInit();
             this.groupBox13.SuspendLayout();
@@ -357,8 +362,6 @@ namespace ASICamera_demo
             ((System.ComponentModel.ISupportInitialize)(this.ud_meter_cur_index)).BeginInit();
             this.tableLayoutPanel36.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ud_meter_exptime)).BeginInit();
-            this.groupBox20.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ud_mono_wavelength)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -710,6 +713,7 @@ namespace ASICamera_demo
             this.tableLayoutPanel21.ColumnCount = 2;
             this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel21.Controls.Add(this.button1, 0, 4);
             this.tableLayoutPanel21.Controls.Add(this.button_autoexp_save, 1, 2);
             this.tableLayoutPanel21.Controls.Add(this.manual_restart_button, 1, 0);
             this.tableLayoutPanel21.Controls.Add(this.manual_file_name, 0, 1);
@@ -730,6 +734,17 @@ namespace ASICamera_demo
             this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
             this.tableLayoutPanel21.Size = new System.Drawing.Size(222, 493);
             this.tableLayoutPanel21.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(4, 448);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(103, 41);
+            this.button1.TabIndex = 39;
+            this.button1.Text = "Save";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // button_autoexp_save
             // 
@@ -1248,6 +1263,85 @@ namespace ASICamera_demo
             this.tabPage1.Size = new System.Drawing.Size(1528, 1313);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Camera Config";
+            // 
+            // groupBox20
+            // 
+            this.groupBox20.Controls.Add(this.bt_save_copy);
+            this.groupBox20.Controls.Add(this.bt_mono_next);
+            this.groupBox20.Controls.Add(this.bt_mono_confirm);
+            this.groupBox20.Controls.Add(this.bt_open_monometer);
+            this.groupBox20.Controls.Add(this.ud_mono_wavelength);
+            this.groupBox20.Location = new System.Drawing.Point(830, 652);
+            this.groupBox20.Name = "groupBox20";
+            this.groupBox20.Size = new System.Drawing.Size(412, 267);
+            this.groupBox20.TabIndex = 9;
+            this.groupBox20.TabStop = false;
+            this.groupBox20.Text = "groupBox20";
+            // 
+            // bt_save_copy
+            // 
+            this.bt_save_copy.Location = new System.Drawing.Point(81, 164);
+            this.bt_save_copy.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_save_copy.Name = "bt_save_copy";
+            this.bt_save_copy.Size = new System.Drawing.Size(103, 103);
+            this.bt_save_copy.TabIndex = 6;
+            this.bt_save_copy.Text = "Save";
+            this.bt_save_copy.UseVisualStyleBackColor = true;
+            this.bt_save_copy.Click += new System.EventHandler(this.bt_save_copy_Click);
+            // 
+            // bt_mono_next
+            // 
+            this.bt_mono_next.Location = new System.Drawing.Point(251, 169);
+            this.bt_mono_next.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_mono_next.Name = "bt_mono_next";
+            this.bt_mono_next.Size = new System.Drawing.Size(103, 103);
+            this.bt_mono_next.TabIndex = 5;
+            this.bt_mono_next.Text = "Next";
+            this.bt_mono_next.UseVisualStyleBackColor = true;
+            this.bt_mono_next.Click += new System.EventHandler(this.bt_mono_next_Click);
+            // 
+            // bt_mono_confirm
+            // 
+            this.bt_mono_confirm.Location = new System.Drawing.Point(214, 105);
+            this.bt_mono_confirm.Name = "bt_mono_confirm";
+            this.bt_mono_confirm.Size = new System.Drawing.Size(123, 57);
+            this.bt_mono_confirm.TabIndex = 2;
+            this.bt_mono_confirm.Text = "Confirm";
+            this.bt_mono_confirm.UseVisualStyleBackColor = true;
+            this.bt_mono_confirm.Click += new System.EventHandler(this.bt_mono_confirm_Click);
+            // 
+            // bt_open_monometer
+            // 
+            this.bt_open_monometer.Location = new System.Drawing.Point(58, 29);
+            this.bt_open_monometer.Name = "bt_open_monometer";
+            this.bt_open_monometer.Size = new System.Drawing.Size(126, 76);
+            this.bt_open_monometer.TabIndex = 1;
+            this.bt_open_monometer.Text = "Open Monometer";
+            this.bt_open_monometer.UseVisualStyleBackColor = true;
+            this.bt_open_monometer.Click += new System.EventHandler(this.bt_open_monometer_Click);
+            // 
+            // ud_mono_wavelength
+            // 
+            this.ud_mono_wavelength.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ud_mono_wavelength.Location = new System.Drawing.Point(64, 121);
+            this.ud_mono_wavelength.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.ud_mono_wavelength.Name = "ud_mono_wavelength";
+            this.ud_mono_wavelength.Size = new System.Drawing.Size(120, 30);
+            this.ud_mono_wavelength.TabIndex = 0;
+            this.ud_mono_wavelength.Value = new decimal(new int[] {
+            400,
+            0,
+            0,
+            0});
+            this.ud_mono_wavelength.ValueChanged += new System.EventHandler(this.ud_mono_wavelength_ValueChanged);
             // 
             // tb_beta
             // 
@@ -3317,61 +3411,6 @@ namespace ASICamera_demo
             // 
             this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
             // 
-            // groupBox20
-            // 
-            this.groupBox20.Controls.Add(this.bt_mono_confirm);
-            this.groupBox20.Controls.Add(this.bt_open_monometer);
-            this.groupBox20.Controls.Add(this.ud_mono_wavelength);
-            this.groupBox20.Location = new System.Drawing.Point(830, 652);
-            this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(412, 267);
-            this.groupBox20.TabIndex = 9;
-            this.groupBox20.TabStop = false;
-            this.groupBox20.Text = "groupBox20";
-            // 
-            // ud_mono_wavelength
-            // 
-            this.ud_mono_wavelength.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.ud_mono_wavelength.Location = new System.Drawing.Point(64, 121);
-            this.ud_mono_wavelength.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.ud_mono_wavelength.Name = "ud_mono_wavelength";
-            this.ud_mono_wavelength.Size = new System.Drawing.Size(120, 30);
-            this.ud_mono_wavelength.TabIndex = 0;
-            this.ud_mono_wavelength.Value = new decimal(new int[] {
-            400,
-            0,
-            0,
-            0});
-            this.ud_mono_wavelength.ValueChanged += new System.EventHandler(this.ud_mono_wavelength_ValueChanged);
-            // 
-            // bt_open_monometer
-            // 
-            this.bt_open_monometer.Location = new System.Drawing.Point(58, 29);
-            this.bt_open_monometer.Name = "bt_open_monometer";
-            this.bt_open_monometer.Size = new System.Drawing.Size(126, 76);
-            this.bt_open_monometer.TabIndex = 1;
-            this.bt_open_monometer.Text = "Open Monometer";
-            this.bt_open_monometer.UseVisualStyleBackColor = true;
-            this.bt_open_monometer.Click += new System.EventHandler(this.bt_open_monometer_Click);
-            // 
-            // bt_mono_confirm
-            // 
-            this.bt_mono_confirm.Location = new System.Drawing.Point(214, 105);
-            this.bt_mono_confirm.Name = "bt_mono_confirm";
-            this.bt_mono_confirm.Size = new System.Drawing.Size(123, 57);
-            this.bt_mono_confirm.TabIndex = 2;
-            this.bt_mono_confirm.Text = "Confirm";
-            this.bt_mono_confirm.UseVisualStyleBackColor = true;
-            this.bt_mono_confirm.Click += new System.EventHandler(this.bt_mono_confirm_Click);
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -3430,6 +3469,8 @@ namespace ASICamera_demo
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.groupBox20.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ud_mono_wavelength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ud_get_video_count)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ud_timer)).EndInit();
             this.groupBox13.ResumeLayout(false);
@@ -3512,8 +3553,6 @@ namespace ASICamera_demo
             this.tableLayoutPanel36.ResumeLayout(false);
             this.tableLayoutPanel36.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ud_meter_exptime)).EndInit();
-            this.groupBox20.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ud_mono_wavelength)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3750,6 +3789,9 @@ namespace ASICamera_demo
         private System.Windows.Forms.NumericUpDown ud_mono_wavelength;
         private System.Windows.Forms.Button bt_open_monometer;
         private System.Windows.Forms.Button bt_mono_confirm;
+        private System.Windows.Forms.Button bt_mono_next;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bt_save_copy;
     }
 }
 

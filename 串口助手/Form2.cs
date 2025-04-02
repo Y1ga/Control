@@ -2088,6 +2088,23 @@ namespace ASICamera_demo
         
         }
 
+        private void bt_mono_next_Click(object sender, EventArgs e)
+        {
+            // 获取当前值并增加（步长默认为 1）
+            decimal newValue = ud_mono_wavelength.Value + ud_mono_wavelength.Increment;
+
+            // 确保不超过最大值
+            if (newValue <= ud_mono_wavelength.Maximum)
+            {
+                ud_mono_wavelength.Value = newValue; // 修改值会自动触发 ValueChanged 事件
+            }
+        }
+
+        private void bt_save_copy_Click(object sender, EventArgs e)
+        {
+            manual_Click(manual_save_button, EventArgs.Empty);
+        }
+
         private void ud_mono_wavelength_ValueChanged(object sender, EventArgs e)
         {
 
