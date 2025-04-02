@@ -9,6 +9,7 @@ using System.Globalization;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -54,6 +55,9 @@ namespace ASICamera_demo
         string sendMode = "HEX模式";
         string sendCoding = "GBK";
         #endregion
+
+        CmeMoCtrl ser;
+        double zeroPosition, correctionCoefficient, totalSteps;
         #region constructor
         private void Form2_Load(object sender, EventArgs e) //窗口加载事件
         {
@@ -135,6 +139,7 @@ namespace ASICamera_demo
             cbPortName.Items.AddRange(names);
             cbPortName.Text = cbPortName.Items[cbPortName.Items.Count - 1].ToString();
             OpenSerialPort();
+
         }
 
         LineSeries lineSeries = new LineSeries
@@ -143,7 +148,76 @@ namespace ASICamera_demo
             //PointGeometry = DefaultGeometries.Circle,
             PointGeometry = null, // 移除数据点标记
         };
+        static (CmeMoCtrl, double, double, double) CmeMoInit(string portId = "COM9")
+        {
+            CmeMoCtrl ser = new CmeMoCtrl(portName: portId);
+            var connectionInfo = ser.CheckConnection();
+            Console.WriteLine($"Connection Info: {connectionInfo}");
 
+            ser.StartParameterQuery();  // 开始参数查询进程
+
+            var systemParams = ser.QuerySystemParameters();
+            double totalSteps = Convert.ToDouble(((dynamic)systemParams).TotalSteps);
+
+            if (systemParams != null)
+            {
+                Console.WriteLine($"System Parameters: {systemParams}");
+            }
+
+            int gratingGroup = 0;  // 光栅组编号
+            int gratingNumber = 1;  // 光栅编号
+            var gratingParams = ser.QueryGratingParameters(gratingGroup, gratingNumber);
+
+            if (gratingParams != null)
+            {
+                Console.WriteLine($"Grating Parameters: {gratingParams}");
+            }
+
+            var filterGroupInfo = ser.QueryFilterGroup();
+            if (filterGroupInfo != null)
+            {
+                Console.WriteLine($"Filter Group Info: {filterGroupInfo}");
+            }
+
+            var filterWorkingRange = ser.QueryFilterWorkingRange(1, 8);  // 查询光栅编号1，返回8个滤光片信息
+            if (filterWorkingRange != null)
+            {
+                Console.WriteLine($"Filter Working Range: {filterWorkingRange}");
+            }
+
+            var gratingSwitchPosition = ser.QueryGratingSwitchPosition();  // 查询光栅切换位置
+            if (gratingSwitchPosition != null)
+            {
+                Console.WriteLine($"Grating Switch Position: {gratingSwitchPosition}");
+            }
+
+            string parallelExitPosition = ser.QueryParallelExitPosition();  // 查询双出口的1出口定位基准值
+            if (parallelExitPosition != null)
+            {
+                Console.WriteLine($"Parallel Exit Position: {parallelExitPosition}");
+            }
+
+            var exitAutoSwitchWavelength = ser.QueryExitAutoSwitchWavelength();  // 查询出口自动切换波长
+            if (exitAutoSwitchWavelength != null)
+            {
+                Console.WriteLine($"Exit Auto Switch Wavelength: {exitAutoSwitchWavelength}");
+            }
+
+            double zeroPosition = Convert.ToDouble(((dynamic)gratingParams).ZeroPosition);
+            double correctionCoefficient = Convert.ToDouble(((dynamic)gratingParams).CorrectionCoefficient);
+
+            Console.WriteLine($"Zero Position (Z): {zeroPosition}, Correction Coefficient (C): {correctionCoefficient}");
+
+            ser.EndParameterQuery();  // 结束参数查询进程
+
+            // ser.Reposition();  // 重新定位
+            // Thread.Sleep(3000);
+
+            Console.WriteLine($"Current Position: {ser.QueryCurrentPosition()}");  // 查询当前位置
+            Console.WriteLine($"Current Grating: {ser.QueryCurrentGrating()}");  // 查询当前光栅
+
+            return (ser, zeroPosition, correctionCoefficient, totalSteps);
+        }
         // Constructor
         public Form2()
         {
@@ -1838,6 +1912,7 @@ namespace ASICamera_demo
 
         #endregion
 
+
         private void numericUpDown17_ValueChanged(object sender, EventArgs e)
         {
             for (int i = 0; i < 16; i++)
@@ -2004,6 +2079,33 @@ namespace ASICamera_demo
                 );
             });
             thread.Start();
+        }
+
+        private void bt_mono_confirm_Click(object sender, EventArgs e)
+        {
+            // 直接调用ValueChanged事件处理方法
+            ud_mono_wavelength_ValueChanged(ud_mono_wavelength, EventArgs.Empty);
+        
+        }
+
+        private void ud_mono_wavelength_ValueChanged(object sender, EventArgs e)
+        {
+
+            // 移动到目标位置
+            var wav = (double)ud_mono_wavelength.Value;
+            int pos = CmeMoCtrl.Wavelength2Position(wav, correctionCoefficient / 1000.0, zeroPosition, totalSteps);
+            string moveResponse = ser.MoveToWavelength(pos);
+        }
+
+        private void bt_open_monometer_Click(object sender, EventArgs e)
+        {
+
+            (ser, zeroPosition, correctionCoefficient, totalSteps) = CmeMoInit();
+
+            // 设置速度为255
+            ser.SetSpeed(255);
+            Console.WriteLine($"Current Speed: {ser.QueryScanningSpeed()}"); // 查询扫描速度
+
         }
     }
 }
