@@ -18,6 +18,10 @@ namespace ASICamera_demo
     {
         // Meter类相关
         public static bool is_meter_changed = false;
+        public static bool next_ok = false;
+        public static bool update_ok = false;
+        public static bool is_video_changed = false;
+        public static bool is_auto_save = false;
         public static bool search_send_led_ok = false;
 
         // 初始化信号量，初始计数为 3，最大计数也为 3
@@ -1134,6 +1138,7 @@ namespace ASICamera_demo
         #endregion
 
         #region Video Thread
+        int cur_count = 0;
         public void run()
         {
             m_bThreadRunning = true;
@@ -1178,7 +1183,7 @@ namespace ASICamera_demo
 
                 get_buffersize(out cameraID, out width, out height, out buffersize);
                 buffer = Marshal.AllocCoTaskMem(buffersize);
-
+               
                 if (m_CaptureMode == CaptureMode.Video)
                 {
                     // cost: 1s
@@ -1204,12 +1209,23 @@ namespace ASICamera_demo
                         RefreshUI(bmp);
                         // cost: 34ms
                         RefreshHistogram(updateHistogram(hist));
-
+                        
+                        if (SemaphoreHolder.next_ok)
+                        {
+                            if (cur_count == 0) { cur_count++; continue;  } 
+                            else
+                            {
+                                cur_count = 0;
+                            }
+                           
+                            SemaphoreHolder.next_ok = false;
+                            SemaphoreHolder.update_ok = true;
+                        }
                         // 手动保存图片
                         if (SemaphoreHolder.is_manual)
                         {
                             RefreshCapture(bmp, 4);
-                            SemaphoreHolder.is_manual = false;
+                            
                         }
                         else if (SemaphoreHolder.is_confirmed_auto)
                         {
@@ -1228,6 +1244,7 @@ namespace ASICamera_demo
                     {
                         SemaphoreHolder.is_changed_ok = false;
                         SemaphoreHolder.is_hist_updated = true;
+                       
                     }
                 }
                 // 一齐保存：（原子操作）存储下一个将要改变的变量
