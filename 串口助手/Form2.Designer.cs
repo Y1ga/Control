@@ -95,7 +95,19 @@ namespace ASICamera_demo
             this.capture_config_label = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.bt_mono_544 = new System.Windows.Forms.Button();
+            this.bt_mono_394 = new System.Windows.Forms.Button();
+            this.bt_next_foldername = new System.Windows.Forms.Button();
+            this.cb_foldername2 = new System.Windows.Forms.ComboBox();
+            this.cb_foldername1 = new System.Windows.Forms.ComboBox();
+            this.bt_autophoto_led = new System.Windows.Forms.Button();
+            this.bt_savephoto_nextled = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.checkBox_exposureAuto_copy = new System.Windows.Forms.CheckBox();
+            this.bt_savephoto_next = new System.Windows.Forms.Button();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.bt_savespec_next = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.bt_save_copy = new System.Windows.Forms.Button();
             this.bt_mono_next = new System.Windows.Forms.Button();
             this.bt_mono_confirm = new System.Windows.Forms.Button();
@@ -240,6 +252,7 @@ namespace ASICamera_demo
             this.label1 = new System.Windows.Forms.Label();
             this.checkBox_gainAuto = new System.Windows.Forms.CheckBox();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.bt_auto_mono_meter = new System.Windows.Forms.Button();
             this.bt_meter_auto_save = new System.Windows.Forms.Button();
             this.tableLayoutPanel37 = new System.Windows.Forms.TableLayoutPanel();
             this.label53 = new System.Windows.Forms.Label();
@@ -259,6 +272,45 @@ namespace ASICamera_demo
             this.label52 = new System.Windows.Forms.Label();
             this.ud_meter_exptime = new System.Windows.Forms.NumericUpDown();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.bt_encode_next = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.tableLayoutPanel39 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_led16 = new System.Windows.Forms.Panel();
+            this.panel_led15 = new System.Windows.Forms.Panel();
+            this.panel_led14 = new System.Windows.Forms.Panel();
+            this.panel_led13 = new System.Windows.Forms.Panel();
+            this.panel_led12 = new System.Windows.Forms.Panel();
+            this.panel_led11 = new System.Windows.Forms.Panel();
+            this.panel_led10 = new System.Windows.Forms.Panel();
+            this.panel_led9 = new System.Windows.Forms.Panel();
+            this.panel_led8 = new System.Windows.Forms.Panel();
+            this.panel_led7 = new System.Windows.Forms.Panel();
+            this.panel_led6 = new System.Windows.Forms.Panel();
+            this.panel_led5 = new System.Windows.Forms.Panel();
+            this.panel_led4 = new System.Windows.Forms.Panel();
+            this.panel_led3 = new System.Windows.Forms.Panel();
+            this.panel_led2 = new System.Windows.Forms.Panel();
+            this.panel_led1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel38 = new System.Windows.Forms.TableLayoutPanel();
+            this.bt_led16 = new System.Windows.Forms.Button();
+            this.bt_led15 = new System.Windows.Forms.Button();
+            this.bt_led14 = new System.Windows.Forms.Button();
+            this.bt_led13 = new System.Windows.Forms.Button();
+            this.bt_led12 = new System.Windows.Forms.Button();
+            this.bt_led11 = new System.Windows.Forms.Button();
+            this.bt_led10 = new System.Windows.Forms.Button();
+            this.bt_led9 = new System.Windows.Forms.Button();
+            this.bt_led8 = new System.Windows.Forms.Button();
+            this.bt_led7 = new System.Windows.Forms.Button();
+            this.bt_led6 = new System.Windows.Forms.Button();
+            this.bt_led5 = new System.Windows.Forms.Button();
+            this.bt_led4 = new System.Windows.Forms.Button();
+            this.bt_led3 = new System.Windows.Forms.Button();
+            this.bt_led2 = new System.Windows.Forms.Button();
+            this.bt_led1 = new System.Windows.Forms.Button();
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -362,6 +414,9 @@ namespace ASICamera_demo
             ((System.ComponentModel.ISupportInitialize)(this.ud_meter_cur_index)).BeginInit();
             this.tableLayoutPanel36.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ud_meter_exptime)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.tableLayoutPanel39.SuspendLayout();
+            this.tableLayoutPanel38.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -371,7 +426,7 @@ namespace ASICamera_demo
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(882, 500);
+            this.groupBox1.Size = new System.Drawing.Size(880, 500);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Preview";
@@ -382,7 +437,7 @@ namespace ASICamera_demo
             this.pictureBox.Location = new System.Drawing.Point(4, 27);
             this.pictureBox.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(874, 469);
+            this.pictureBox.Size = new System.Drawing.Size(872, 469);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
@@ -403,7 +458,7 @@ namespace ASICamera_demo
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
             this.splitContainer1.Size = new System.Drawing.Size(2402, 1200);
-            this.splitContainer1.SplitterDistance = 899;
+            this.splitContainer1.SplitterDistance = 898;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -415,7 +470,7 @@ namespace ASICamera_demo
             this.groupBox18.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox18.Name = "groupBox18";
             this.groupBox18.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox18.Size = new System.Drawing.Size(899, 1200);
+            this.groupBox18.Size = new System.Drawing.Size(898, 1200);
             this.groupBox18.TabIndex = 3;
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "Video";
@@ -434,7 +489,7 @@ namespace ASICamera_demo
             this.tableLayoutPanel29.RowCount = 2;
             this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.54733F));
             this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.45267F));
-            this.tableLayoutPanel29.Size = new System.Drawing.Size(891, 1160);
+            this.tableLayoutPanel29.Size = new System.Drawing.Size(890, 1160);
             this.tableLayoutPanel29.TabIndex = 2;
             // 
             // groupBox10
@@ -446,7 +501,7 @@ namespace ASICamera_demo
             this.groupBox10.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox10.Size = new System.Drawing.Size(883, 636);
+            this.groupBox10.Size = new System.Drawing.Size(882, 636);
             this.groupBox10.TabIndex = 1;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "groupBox10";
@@ -464,7 +519,7 @@ namespace ASICamera_demo
             this.tableLayoutPanel32.Name = "tableLayoutPanel32";
             this.tableLayoutPanel32.RowCount = 1;
             this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel32.Size = new System.Drawing.Size(875, 598);
+            this.tableLayoutPanel32.Size = new System.Drawing.Size(874, 598);
             this.tableLayoutPanel32.TabIndex = 4;
             // 
             // tabControl2
@@ -477,7 +532,7 @@ namespace ASICamera_demo
             this.tabControl2.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(430, 590);
+            this.tabControl2.Size = new System.Drawing.Size(429, 590);
             this.tabControl2.TabIndex = 0;
             // 
             // tabPage5
@@ -487,7 +542,7 @@ namespace ASICamera_demo
             this.tabPage5.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage5.Size = new System.Drawing.Size(422, 547);
+            this.tabPage5.Size = new System.Drawing.Size(421, 547);
             this.tabPage5.TabIndex = 2;
             this.tabPage5.Text = "tabPage5";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -505,7 +560,7 @@ namespace ASICamera_demo
             this.tableLayoutPanel33.Name = "tableLayoutPanel33";
             this.tableLayoutPanel33.RowCount = 1;
             this.tableLayoutPanel33.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel33.Size = new System.Drawing.Size(414, 539);
+            this.tableLayoutPanel33.Size = new System.Drawing.Size(413, 539);
             this.tableLayoutPanel33.TabIndex = 37;
             // 
             // tableLayoutPanel34
@@ -521,7 +576,7 @@ namespace ASICamera_demo
             this.tableLayoutPanel34.RowCount = 2;
             this.tableLayoutPanel34.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel34.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel34.Size = new System.Drawing.Size(168, 531);
+            this.tableLayoutPanel34.Size = new System.Drawing.Size(167, 531);
             this.tableLayoutPanel34.TabIndex = 38;
             // 
             // tableLayoutPanel17
@@ -537,7 +592,7 @@ namespace ASICamera_demo
             this.tableLayoutPanel17.RowCount = 2;
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel17.Size = new System.Drawing.Size(160, 258);
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(159, 258);
             this.tableLayoutPanel17.TabIndex = 3;
             // 
             // clear_led_exp1
@@ -686,7 +741,7 @@ namespace ASICamera_demo
             this.groupBox17.Controls.Add(this.save_exp_time_button);
             this.groupBox17.Controls.Add(this.tableLayoutPanel21);
             this.groupBox17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox17.Location = new System.Drawing.Point(180, 4);
+            this.groupBox17.Location = new System.Drawing.Point(179, 4);
             this.groupBox17.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Padding = new System.Windows.Forms.Padding(4);
@@ -846,7 +901,7 @@ namespace ASICamera_demo
             this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage4.Size = new System.Drawing.Size(422, 547);
+            this.tabPage4.Size = new System.Drawing.Size(421, 547);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -906,7 +961,7 @@ namespace ASICamera_demo
             this.tabPage6.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage6.Size = new System.Drawing.Size(422, 547);
+            this.tabPage6.Size = new System.Drawing.Size(421, 547);
             this.tabPage6.TabIndex = 3;
             this.tabPage6.Text = "tabPage6";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1239,12 +1294,22 @@ namespace ASICamera_demo
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1536, 1353);
+            this.tabControl1.Size = new System.Drawing.Size(1533, 1226);
             this.tabControl1.TabIndex = 15;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.Controls.Add(this.bt_mono_544);
+            this.tabPage1.Controls.Add(this.bt_mono_394);
+            this.tabPage1.Controls.Add(this.bt_next_foldername);
+            this.tabPage1.Controls.Add(this.cb_foldername2);
+            this.tabPage1.Controls.Add(this.cb_foldername1);
+            this.tabPage1.Controls.Add(this.bt_autophoto_led);
+            this.tabPage1.Controls.Add(this.bt_savephoto_nextled);
+            this.tabPage1.Controls.Add(this.button3);
+            this.tabPage1.Controls.Add(this.checkBox_exposureAuto_copy);
+            this.tabPage1.Controls.Add(this.bt_savephoto_next);
             this.tabPage1.Controls.Add(this.groupBox20);
             this.tabPage1.Controls.Add(this.tb_beta);
             this.tabPage1.Controls.Add(this.ud_get_video_count);
@@ -1260,12 +1325,128 @@ namespace ASICamera_demo
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(1528, 1313);
+            this.tabPage1.Size = new System.Drawing.Size(1525, 1186);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Camera Config";
             // 
+            // bt_mono_544
+            // 
+            this.bt_mono_544.Location = new System.Drawing.Point(1260, 834);
+            this.bt_mono_544.Name = "bt_mono_544";
+            this.bt_mono_544.Size = new System.Drawing.Size(90, 56);
+            this.bt_mono_544.TabIndex = 46;
+            this.bt_mono_544.Text = "544";
+            this.bt_mono_544.UseVisualStyleBackColor = true;
+            this.bt_mono_544.Click += new System.EventHandler(this.bt_mono_544_Click);
+            // 
+            // bt_mono_394
+            // 
+            this.bt_mono_394.Location = new System.Drawing.Point(1248, 724);
+            this.bt_mono_394.Name = "bt_mono_394";
+            this.bt_mono_394.Size = new System.Drawing.Size(102, 78);
+            this.bt_mono_394.TabIndex = 45;
+            this.bt_mono_394.Text = "394";
+            this.bt_mono_394.UseVisualStyleBackColor = true;
+            this.bt_mono_394.Click += new System.EventHandler(this.bt_mono_394_Click);
+            // 
+            // bt_next_foldername
+            // 
+            this.bt_next_foldername.Location = new System.Drawing.Point(860, 1072);
+            this.bt_next_foldername.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_next_foldername.Name = "bt_next_foldername";
+            this.bt_next_foldername.Size = new System.Drawing.Size(102, 68);
+            this.bt_next_foldername.TabIndex = 9;
+            this.bt_next_foldername.Text = "Next";
+            this.bt_next_foldername.UseVisualStyleBackColor = true;
+            this.bt_next_foldername.Click += new System.EventHandler(this.bt_next_foldername_Click);
+            // 
+            // cb_foldername2
+            // 
+            this.cb_foldername2.FormattingEnabled = true;
+            this.cb_foldername2.Items.AddRange(new object[] {
+            "mono1",
+            "mono2",
+            "y",
+            "sum_A"});
+            this.cb_foldername2.Location = new System.Drawing.Point(1022, 1036);
+            this.cb_foldername2.Name = "cb_foldername2";
+            this.cb_foldername2.Size = new System.Drawing.Size(138, 28);
+            this.cb_foldername2.TabIndex = 44;
+            // 
+            // cb_foldername1
+            // 
+            this.cb_foldername1.FormattingEnabled = true;
+            this.cb_foldername1.Items.AddRange(new object[] {
+            "sum_A",
+            "y",
+            "mono2",
+            "mono1"});
+            this.cb_foldername1.Location = new System.Drawing.Point(860, 1036);
+            this.cb_foldername1.Name = "cb_foldername1";
+            this.cb_foldername1.Size = new System.Drawing.Size(138, 28);
+            this.cb_foldername1.TabIndex = 43;
+            // 
+            // bt_autophoto_led
+            // 
+            this.bt_autophoto_led.Location = new System.Drawing.Point(298, 1066);
+            this.bt_autophoto_led.Name = "bt_autophoto_led";
+            this.bt_autophoto_led.Size = new System.Drawing.Size(159, 64);
+            this.bt_autophoto_led.TabIndex = 42;
+            this.bt_autophoto_led.Text = "Auto Photo LED";
+            this.bt_autophoto_led.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bt_autophoto_led.UseVisualStyleBackColor = true;
+            this.bt_autophoto_led.Click += new System.EventHandler(this.bt_autophoto_led_Click);
+            // 
+            // bt_savephoto_nextled
+            // 
+            this.bt_savephoto_nextled.Location = new System.Drawing.Point(480, 1028);
+            this.bt_savephoto_nextled.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_savephoto_nextled.Name = "bt_savephoto_nextled";
+            this.bt_savephoto_nextled.Size = new System.Drawing.Size(100, 58);
+            this.bt_savephoto_nextled.TabIndex = 41;
+            this.bt_savephoto_nextled.Text = "Save Photo,next LED";
+            this.bt_savephoto_nextled.UseVisualStyleBackColor = true;
+            this.bt_savephoto_nextled.Click += new System.EventHandler(this.bt_savephoto_nextled_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(1035, 926);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(190, 76);
+            this.button3.TabIndex = 10;
+            this.button3.Text = "Auto Mono Photo";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // checkBox_exposureAuto_copy
+            // 
+            this.checkBox_exposureAuto_copy.AutoSize = true;
+            this.checkBox_exposureAuto_copy.Enabled = false;
+            this.checkBox_exposureAuto_copy.Location = new System.Drawing.Point(939, 938);
+            this.checkBox_exposureAuto_copy.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBox_exposureAuto_copy.Name = "checkBox_exposureAuto_copy";
+            this.checkBox_exposureAuto_copy.Size = new System.Drawing.Size(75, 24);
+            this.checkBox_exposureAuto_copy.TabIndex = 40;
+            this.checkBox_exposureAuto_copy.Text = "Auto";
+            this.checkBox_exposureAuto_copy.UseVisualStyleBackColor = true;
+            this.checkBox_exposureAuto_copy.CheckedChanged += new System.EventHandler(this.checkBox_exposureAuto_copy_CheckedChanged);
+            // 
+            // bt_savephoto_next
+            // 
+            this.bt_savephoto_next.Location = new System.Drawing.Point(807, 934);
+            this.bt_savephoto_next.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_savephoto_next.Name = "bt_savephoto_next";
+            this.bt_savephoto_next.Size = new System.Drawing.Size(120, 52);
+            this.bt_savephoto_next.TabIndex = 9;
+            this.bt_savephoto_next.Text = "Save Photo,then\'Next";
+            this.bt_savephoto_next.UseVisualStyleBackColor = true;
+            this.bt_savephoto_next.Click += new System.EventHandler(this.bt_savephoto_next_Click);
+            // 
             // groupBox20
             // 
+            this.groupBox20.Controls.Add(this.bt_savespec_next);
+            this.groupBox20.Controls.Add(this.button2);
             this.groupBox20.Controls.Add(this.bt_save_copy);
             this.groupBox20.Controls.Add(this.bt_mono_next);
             this.groupBox20.Controls.Add(this.bt_mono_confirm);
@@ -1278,12 +1459,34 @@ namespace ASICamera_demo
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "groupBox20";
             // 
+            // bt_savespec_next
+            // 
+            this.bt_savespec_next.Location = new System.Drawing.Point(243, 196);
+            this.bt_savespec_next.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_savespec_next.Name = "bt_savespec_next";
+            this.bt_savespec_next.Size = new System.Drawing.Size(120, 52);
+            this.bt_savespec_next.TabIndex = 8;
+            this.bt_savespec_next.Text = "Save Spec,then\'Next";
+            this.bt_savespec_next.UseVisualStyleBackColor = true;
+            this.bt_savespec_next.Click += new System.EventHandler(this.bt_savespec_next_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(243, 136);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(120, 52);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Save Spec";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // bt_save_copy
             // 
-            this.bt_save_copy.Location = new System.Drawing.Point(81, 164);
+            this.bt_save_copy.Location = new System.Drawing.Point(10, 158);
             this.bt_save_copy.Margin = new System.Windows.Forms.Padding(4);
             this.bt_save_copy.Name = "bt_save_copy";
-            this.bt_save_copy.Size = new System.Drawing.Size(103, 103);
+            this.bt_save_copy.Size = new System.Drawing.Size(104, 104);
             this.bt_save_copy.TabIndex = 6;
             this.bt_save_copy.Text = "Save";
             this.bt_save_copy.UseVisualStyleBackColor = true;
@@ -1291,10 +1494,10 @@ namespace ASICamera_demo
             // 
             // bt_mono_next
             // 
-            this.bt_mono_next.Location = new System.Drawing.Point(251, 169);
+            this.bt_mono_next.Location = new System.Drawing.Point(122, 192);
             this.bt_mono_next.Margin = new System.Windows.Forms.Padding(4);
             this.bt_mono_next.Name = "bt_mono_next";
-            this.bt_mono_next.Size = new System.Drawing.Size(103, 103);
+            this.bt_mono_next.Size = new System.Drawing.Size(102, 68);
             this.bt_mono_next.TabIndex = 5;
             this.bt_mono_next.Text = "Next";
             this.bt_mono_next.UseVisualStyleBackColor = true;
@@ -1302,7 +1505,7 @@ namespace ASICamera_demo
             // 
             // bt_mono_confirm
             // 
-            this.bt_mono_confirm.Location = new System.Drawing.Point(214, 105);
+            this.bt_mono_confirm.Location = new System.Drawing.Point(190, 16);
             this.bt_mono_confirm.Name = "bt_mono_confirm";
             this.bt_mono_confirm.Size = new System.Drawing.Size(123, 57);
             this.bt_mono_confirm.TabIndex = 2;
@@ -1312,7 +1515,7 @@ namespace ASICamera_demo
             // 
             // bt_open_monometer
             // 
-            this.bt_open_monometer.Location = new System.Drawing.Point(58, 29);
+            this.bt_open_monometer.Location = new System.Drawing.Point(58, 28);
             this.bt_open_monometer.Name = "bt_open_monometer";
             this.bt_open_monometer.Size = new System.Drawing.Size(126, 76);
             this.bt_open_monometer.TabIndex = 1;
@@ -1327,7 +1530,7 @@ namespace ASICamera_demo
             0,
             0,
             0});
-            this.ud_mono_wavelength.Location = new System.Drawing.Point(64, 121);
+            this.ud_mono_wavelength.Location = new System.Drawing.Point(64, 122);
             this.ud_mono_wavelength.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1337,7 +1540,7 @@ namespace ASICamera_demo
             this.ud_mono_wavelength.Size = new System.Drawing.Size(120, 30);
             this.ud_mono_wavelength.TabIndex = 0;
             this.ud_mono_wavelength.Value = new decimal(new int[] {
-            400,
+            394,
             0,
             0,
             0});
@@ -1473,7 +1676,7 @@ namespace ASICamera_demo
             "6",
             "7",
             "8"});
-            this.cbDataBits.Location = new System.Drawing.Point(100, 5);
+            this.cbDataBits.Location = new System.Drawing.Point(100, 6);
             this.cbDataBits.Margin = new System.Windows.Forms.Padding(4);
             this.cbDataBits.Name = "cbDataBits";
             this.cbDataBits.Size = new System.Drawing.Size(85, 28);
@@ -1499,7 +1702,7 @@ namespace ASICamera_demo
             "1",
             "1.5",
             "2"});
-            this.cbStopBits.Location = new System.Drawing.Point(100, 43);
+            this.cbStopBits.Location = new System.Drawing.Point(100, 44);
             this.cbStopBits.Margin = new System.Windows.Forms.Padding(4);
             this.cbStopBits.Name = "cbStopBits";
             this.cbStopBits.Size = new System.Drawing.Size(85, 28);
@@ -1514,7 +1717,7 @@ namespace ASICamera_demo
             "无",
             "奇校验",
             "偶校验"});
-            this.cbParity.Location = new System.Drawing.Point(100, 82);
+            this.cbParity.Location = new System.Drawing.Point(100, 83);
             this.cbParity.Margin = new System.Windows.Forms.Padding(4);
             this.cbParity.Name = "cbParity";
             this.cbParity.Size = new System.Drawing.Size(85, 28);
@@ -1681,7 +1884,7 @@ namespace ASICamera_demo
             this.cbSendMode.Items.AddRange(new object[] {
             "HEX模式",
             "文本模式"});
-            this.cbSendMode.Location = new System.Drawing.Point(94, 8);
+            this.cbSendMode.Location = new System.Drawing.Point(94, 9);
             this.cbSendMode.Margin = new System.Windows.Forms.Padding(4);
             this.cbSendMode.Name = "cbSendMode";
             this.cbSendMode.Size = new System.Drawing.Size(172, 28);
@@ -1706,7 +1909,7 @@ namespace ASICamera_demo
             this.cbSendCoding.Items.AddRange(new object[] {
             "GBK",
             "UTF-8"});
-            this.cbSendCoding.Location = new System.Drawing.Point(94, 55);
+            this.cbSendCoding.Location = new System.Drawing.Point(94, 56);
             this.cbSendCoding.Margin = new System.Windows.Forms.Padding(4);
             this.cbSendCoding.Name = "cbSendCoding";
             this.cbSendCoding.Size = new System.Drawing.Size(172, 28);
@@ -1763,7 +1966,7 @@ namespace ASICamera_demo
             this.cbReceiveMode.Items.AddRange(new object[] {
             "HEX模式",
             "文本模式"});
-            this.cbReceiveMode.Location = new System.Drawing.Point(94, 8);
+            this.cbReceiveMode.Location = new System.Drawing.Point(94, 9);
             this.cbReceiveMode.Margin = new System.Windows.Forms.Padding(4);
             this.cbReceiveMode.Name = "cbReceiveMode";
             this.cbReceiveMode.Size = new System.Drawing.Size(172, 28);
@@ -1788,7 +1991,7 @@ namespace ASICamera_demo
             this.cbReceiveCoding.Items.AddRange(new object[] {
             "GBK",
             "UTF-8"});
-            this.cbReceiveCoding.Location = new System.Drawing.Point(94, 55);
+            this.cbReceiveCoding.Location = new System.Drawing.Point(94, 56);
             this.cbReceiveCoding.Margin = new System.Windows.Forms.Padding(4);
             this.cbReceiveCoding.Name = "cbReceiveCoding";
             this.cbReceiveCoding.Size = new System.Drawing.Size(172, 28);
@@ -1974,7 +2177,7 @@ namespace ASICamera_demo
             this.cbPortName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cbPortName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPortName.FormattingEnabled = true;
-            this.cbPortName.Location = new System.Drawing.Point(94, 4);
+            this.cbPortName.Location = new System.Drawing.Point(94, 10);
             this.cbPortName.Margin = new System.Windows.Forms.Padding(4);
             this.cbPortName.Name = "cbPortName";
             this.cbPortName.Size = new System.Drawing.Size(172, 39);
@@ -2002,7 +2205,7 @@ namespace ASICamera_demo
             "38400",
             "115200",
             "460800"});
-            this.cbBaudRate.Location = new System.Drawing.Point(94, 50);
+            this.cbBaudRate.Location = new System.Drawing.Point(94, 56);
             this.cbBaudRate.Margin = new System.Windows.Forms.Padding(4);
             this.cbBaudRate.Name = "cbBaudRate";
             this.cbBaudRate.Size = new System.Drawing.Size(172, 39);
@@ -2291,11 +2494,12 @@ namespace ASICamera_demo
             this.tableLayoutPanel9.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.RowCount = 4;
+            this.tableLayoutPanel9.RowCount = 5;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel9.Size = new System.Drawing.Size(579, 284);
             this.tableLayoutPanel9.TabIndex = 0;
             // 
@@ -2306,7 +2510,7 @@ namespace ASICamera_demo
             this.label24.Location = new System.Drawing.Point(4, 0);
             this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(64, 71);
+            this.label24.Size = new System.Drawing.Size(64, 63);
             this.label24.TabIndex = 0;
             this.label24.Text = "label24";
             // 
@@ -2317,7 +2521,7 @@ namespace ASICamera_demo
             this.label25.Location = new System.Drawing.Point(148, 0);
             this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(64, 71);
+            this.label25.Size = new System.Drawing.Size(64, 63);
             this.label25.TabIndex = 1;
             this.label25.Text = "label25";
             // 
@@ -2328,7 +2532,7 @@ namespace ASICamera_demo
             this.label26.Location = new System.Drawing.Point(292, 0);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(64, 71);
+            this.label26.Size = new System.Drawing.Size(64, 63);
             this.label26.TabIndex = 2;
             this.label26.Text = "label26";
             // 
@@ -2339,7 +2543,7 @@ namespace ASICamera_demo
             this.label27.Location = new System.Drawing.Point(436, 0);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(64, 71);
+            this.label27.Size = new System.Drawing.Size(64, 63);
             this.label27.TabIndex = 3;
             this.label27.Text = "label27";
             // 
@@ -2347,10 +2551,10 @@ namespace ASICamera_demo
             // 
             this.label28.AutoSize = true;
             this.label28.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label28.Location = new System.Drawing.Point(4, 71);
+            this.label28.Location = new System.Drawing.Point(4, 63);
             this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(64, 71);
+            this.label28.Size = new System.Drawing.Size(64, 63);
             this.label28.TabIndex = 4;
             this.label28.Text = "label28";
             // 
@@ -2358,10 +2562,10 @@ namespace ASICamera_demo
             // 
             this.label29.AutoSize = true;
             this.label29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label29.Location = new System.Drawing.Point(148, 71);
+            this.label29.Location = new System.Drawing.Point(148, 63);
             this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(64, 71);
+            this.label29.Size = new System.Drawing.Size(64, 63);
             this.label29.TabIndex = 5;
             this.label29.Text = "label29";
             // 
@@ -2369,10 +2573,10 @@ namespace ASICamera_demo
             // 
             this.label30.AutoSize = true;
             this.label30.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label30.Location = new System.Drawing.Point(292, 71);
+            this.label30.Location = new System.Drawing.Point(292, 63);
             this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(64, 71);
+            this.label30.Size = new System.Drawing.Size(64, 63);
             this.label30.TabIndex = 6;
             this.label30.Text = "label30";
             // 
@@ -2380,10 +2584,10 @@ namespace ASICamera_demo
             // 
             this.label31.AutoSize = true;
             this.label31.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label31.Location = new System.Drawing.Point(436, 71);
+            this.label31.Location = new System.Drawing.Point(436, 63);
             this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(64, 71);
+            this.label31.Size = new System.Drawing.Size(64, 63);
             this.label31.TabIndex = 7;
             this.label31.Text = "label31";
             // 
@@ -2391,10 +2595,10 @@ namespace ASICamera_demo
             // 
             this.label32.AutoSize = true;
             this.label32.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label32.Location = new System.Drawing.Point(4, 142);
+            this.label32.Location = new System.Drawing.Point(4, 126);
             this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(64, 71);
+            this.label32.Size = new System.Drawing.Size(64, 63);
             this.label32.TabIndex = 8;
             this.label32.Text = "label32";
             // 
@@ -2402,10 +2606,10 @@ namespace ASICamera_demo
             // 
             this.label33.AutoSize = true;
             this.label33.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label33.Location = new System.Drawing.Point(148, 142);
+            this.label33.Location = new System.Drawing.Point(148, 126);
             this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(64, 71);
+            this.label33.Size = new System.Drawing.Size(64, 63);
             this.label33.TabIndex = 9;
             this.label33.Text = "label33";
             // 
@@ -2413,10 +2617,10 @@ namespace ASICamera_demo
             // 
             this.label34.AutoSize = true;
             this.label34.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label34.Location = new System.Drawing.Point(292, 142);
+            this.label34.Location = new System.Drawing.Point(292, 126);
             this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(64, 71);
+            this.label34.Size = new System.Drawing.Size(64, 63);
             this.label34.TabIndex = 10;
             this.label34.Text = "label34";
             // 
@@ -2424,10 +2628,10 @@ namespace ASICamera_demo
             // 
             this.label35.AutoSize = true;
             this.label35.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label35.Location = new System.Drawing.Point(436, 142);
+            this.label35.Location = new System.Drawing.Point(436, 126);
             this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(64, 71);
+            this.label35.Size = new System.Drawing.Size(64, 63);
             this.label35.TabIndex = 11;
             this.label35.Text = "label35";
             // 
@@ -2435,10 +2639,10 @@ namespace ASICamera_demo
             // 
             this.label36.AutoSize = true;
             this.label36.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label36.Location = new System.Drawing.Point(4, 213);
+            this.label36.Location = new System.Drawing.Point(4, 189);
             this.label36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(64, 71);
+            this.label36.Size = new System.Drawing.Size(64, 63);
             this.label36.TabIndex = 12;
             this.label36.Text = "label36";
             // 
@@ -2446,10 +2650,10 @@ namespace ASICamera_demo
             // 
             this.label37.AutoSize = true;
             this.label37.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label37.Location = new System.Drawing.Point(148, 213);
+            this.label37.Location = new System.Drawing.Point(148, 189);
             this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(64, 71);
+            this.label37.Size = new System.Drawing.Size(64, 63);
             this.label37.TabIndex = 13;
             this.label37.Text = "label37";
             // 
@@ -2457,20 +2661,20 @@ namespace ASICamera_demo
             // 
             this.label38.AutoSize = true;
             this.label38.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label38.Location = new System.Drawing.Point(292, 213);
+            this.label38.Location = new System.Drawing.Point(292, 189);
             this.label38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(64, 71);
+            this.label38.Size = new System.Drawing.Size(64, 63);
             this.label38.TabIndex = 14;
             this.label38.Text = "label38";
             // 
             // label39
             // 
             this.label39.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label39.Location = new System.Drawing.Point(436, 213);
+            this.label39.Location = new System.Drawing.Point(436, 189);
             this.label39.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(64, 71);
+            this.label39.Size = new System.Drawing.Size(64, 63);
             this.label39.TabIndex = 0;
             this.label39.Text = "label39";
             // 
@@ -2514,7 +2718,7 @@ namespace ASICamera_demo
             // numericUpDown5
             // 
             this.numericUpDown5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown5.Location = new System.Drawing.Point(76, 75);
+            this.numericUpDown5.Location = new System.Drawing.Point(76, 67);
             this.numericUpDown5.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown5.Name = "numericUpDown5";
             this.numericUpDown5.Size = new System.Drawing.Size(64, 39);
@@ -2523,7 +2727,7 @@ namespace ASICamera_demo
             // numericUpDown6
             // 
             this.numericUpDown6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown6.Location = new System.Drawing.Point(220, 75);
+            this.numericUpDown6.Location = new System.Drawing.Point(220, 67);
             this.numericUpDown6.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown6.Name = "numericUpDown6";
             this.numericUpDown6.Size = new System.Drawing.Size(64, 39);
@@ -2532,7 +2736,7 @@ namespace ASICamera_demo
             // numericUpDown7
             // 
             this.numericUpDown7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown7.Location = new System.Drawing.Point(364, 75);
+            this.numericUpDown7.Location = new System.Drawing.Point(364, 67);
             this.numericUpDown7.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown7.Name = "numericUpDown7";
             this.numericUpDown7.Size = new System.Drawing.Size(64, 39);
@@ -2541,7 +2745,7 @@ namespace ASICamera_demo
             // numericUpDown8
             // 
             this.numericUpDown8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown8.Location = new System.Drawing.Point(508, 75);
+            this.numericUpDown8.Location = new System.Drawing.Point(508, 67);
             this.numericUpDown8.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown8.Name = "numericUpDown8";
             this.numericUpDown8.Size = new System.Drawing.Size(67, 39);
@@ -2550,7 +2754,7 @@ namespace ASICamera_demo
             // numericUpDown9
             // 
             this.numericUpDown9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown9.Location = new System.Drawing.Point(76, 146);
+            this.numericUpDown9.Location = new System.Drawing.Point(76, 130);
             this.numericUpDown9.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown9.Name = "numericUpDown9";
             this.numericUpDown9.Size = new System.Drawing.Size(64, 39);
@@ -2559,7 +2763,7 @@ namespace ASICamera_demo
             // numericUpDown10
             // 
             this.numericUpDown10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown10.Location = new System.Drawing.Point(220, 146);
+            this.numericUpDown10.Location = new System.Drawing.Point(220, 130);
             this.numericUpDown10.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown10.Name = "numericUpDown10";
             this.numericUpDown10.Size = new System.Drawing.Size(64, 39);
@@ -2568,7 +2772,7 @@ namespace ASICamera_demo
             // numericUpDown11
             // 
             this.numericUpDown11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown11.Location = new System.Drawing.Point(364, 146);
+            this.numericUpDown11.Location = new System.Drawing.Point(364, 130);
             this.numericUpDown11.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown11.Name = "numericUpDown11";
             this.numericUpDown11.Size = new System.Drawing.Size(64, 39);
@@ -2577,7 +2781,7 @@ namespace ASICamera_demo
             // numericUpDown12
             // 
             this.numericUpDown12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown12.Location = new System.Drawing.Point(508, 146);
+            this.numericUpDown12.Location = new System.Drawing.Point(508, 130);
             this.numericUpDown12.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown12.Name = "numericUpDown12";
             this.numericUpDown12.Size = new System.Drawing.Size(67, 39);
@@ -2586,7 +2790,7 @@ namespace ASICamera_demo
             // numericUpDown13
             // 
             this.numericUpDown13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown13.Location = new System.Drawing.Point(76, 217);
+            this.numericUpDown13.Location = new System.Drawing.Point(76, 193);
             this.numericUpDown13.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown13.Name = "numericUpDown13";
             this.numericUpDown13.Size = new System.Drawing.Size(64, 39);
@@ -2595,7 +2799,7 @@ namespace ASICamera_demo
             // numericUpDown14
             // 
             this.numericUpDown14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown14.Location = new System.Drawing.Point(220, 217);
+            this.numericUpDown14.Location = new System.Drawing.Point(220, 193);
             this.numericUpDown14.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown14.Name = "numericUpDown14";
             this.numericUpDown14.Size = new System.Drawing.Size(64, 39);
@@ -2605,7 +2809,7 @@ namespace ASICamera_demo
             // 
             this.numericUpDown15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown15.Enabled = false;
-            this.numericUpDown15.Location = new System.Drawing.Point(364, 217);
+            this.numericUpDown15.Location = new System.Drawing.Point(364, 193);
             this.numericUpDown15.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown15.Name = "numericUpDown15";
             this.numericUpDown15.Size = new System.Drawing.Size(64, 39);
@@ -2615,7 +2819,7 @@ namespace ASICamera_demo
             // 
             this.numericUpDown16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown16.Enabled = false;
-            this.numericUpDown16.Location = new System.Drawing.Point(508, 217);
+            this.numericUpDown16.Location = new System.Drawing.Point(508, 193);
             this.numericUpDown16.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown16.Name = "numericUpDown16";
             this.numericUpDown16.Size = new System.Drawing.Size(67, 39);
@@ -3141,6 +3345,7 @@ namespace ASICamera_demo
             // 
             // groupBox19
             // 
+            this.groupBox19.Controls.Add(this.bt_auto_mono_meter);
             this.groupBox19.Controls.Add(this.bt_meter_auto_save);
             this.groupBox19.Controls.Add(this.tableLayoutPanel37);
             this.groupBox19.Controls.Add(this.bt_close_meter);
@@ -3157,6 +3362,17 @@ namespace ASICamera_demo
             this.groupBox19.TabIndex = 1;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "Spectrometer";
+            // 
+            // bt_auto_mono_meter
+            // 
+            this.bt_auto_mono_meter.Location = new System.Drawing.Point(512, 490);
+            this.bt_auto_mono_meter.Name = "bt_auto_mono_meter";
+            this.bt_auto_mono_meter.Size = new System.Drawing.Size(108, 68);
+            this.bt_auto_mono_meter.TabIndex = 9;
+            this.bt_auto_mono_meter.Text = "Auto Mono";
+            this.bt_auto_mono_meter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bt_auto_mono_meter.UseVisualStyleBackColor = true;
+            this.bt_auto_mono_meter.Click += new System.EventHandler(this.bt_auto_mono_meter_Click);
             // 
             // bt_meter_auto_save
             // 
@@ -3277,11 +3493,6 @@ namespace ASICamera_demo
             this.ud_meter_cur_index.Name = "ud_meter_cur_index";
             this.ud_meter_cur_index.Size = new System.Drawing.Size(74, 30);
             this.ud_meter_cur_index.TabIndex = 6;
-            this.ud_meter_cur_index.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             // 
             // tb_name_meter
             // 
@@ -3313,6 +3524,7 @@ namespace ASICamera_demo
             this.bt_save_spec.TabIndex = 5;
             this.bt_save_spec.Text = "Save Spec";
             this.bt_save_spec.UseVisualStyleBackColor = true;
+            this.bt_save_spec.Click += new System.EventHandler(this.bt_save_spec_Click);
             // 
             // bt_open_meter
             // 
@@ -3323,6 +3535,7 @@ namespace ASICamera_demo
             this.bt_open_meter.TabIndex = 4;
             this.bt_open_meter.Text = "Open Meter";
             this.bt_open_meter.UseVisualStyleBackColor = true;
+            this.bt_open_meter.Click += new System.EventHandler(this.bt_open_meter_Click);
             // 
             // textBox2
             // 
@@ -3395,17 +3608,509 @@ namespace ASICamera_demo
             0,
             0,
             0});
+            this.ud_meter_exptime.ValueChanged += new System.EventHandler(this.ud_meter_exptime_ValueChanged);
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage2.Controls.Add(this.checkBox2);
+            this.tabPage2.Controls.Add(this.checkBox1);
+            this.tabPage2.Controls.Add(this.bt_encode_next);
+            this.tabPage2.Controls.Add(this.comboBox1);
+            this.tabPage2.Controls.Add(this.button4);
+            this.tabPage2.Controls.Add(this.tableLayoutPanel39);
+            this.tabPage2.Controls.Add(this.tableLayoutPanel38);
             this.tabPage2.Location = new System.Drawing.Point(4, 36);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(1528, 1313);
+            this.tabPage2.Size = new System.Drawing.Size(1525, 1186);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Others";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(854, 469);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(140, 31);
+            this.checkBox2.TabIndex = 9;
+            this.checkBox2.Text = "checkBox2";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Enabled = false;
+            this.checkBox1.Location = new System.Drawing.Point(723, 456);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(85, 31);
+            this.checkBox1.TabIndex = 8;
+            this.checkBox1.Text = "Auto";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // bt_encode_next
+            // 
+            this.bt_encode_next.Location = new System.Drawing.Point(732, 316);
+            this.bt_encode_next.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_encode_next.Name = "bt_encode_next";
+            this.bt_encode_next.Size = new System.Drawing.Size(128, 76);
+            this.bt_encode_next.TabIndex = 6;
+            this.bt_encode_next.Text = "Next";
+            this.bt_encode_next.UseVisualStyleBackColor = true;
+            this.bt_encode_next.Click += new System.EventHandler(this.bt_encode_next_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"});
+            this.comboBox1.Location = new System.Drawing.Point(988, 338);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(180, 35);
+            this.comboBox1.TabIndex = 5;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(732, 219);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(128, 76);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "Set";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // tableLayoutPanel39
+            // 
+            this.tableLayoutPanel39.ColumnCount = 4;
+            this.tableLayoutPanel39.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel39.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel39.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel39.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel39.Controls.Add(this.panel_led16, 3, 3);
+            this.tableLayoutPanel39.Controls.Add(this.panel_led15, 2, 3);
+            this.tableLayoutPanel39.Controls.Add(this.panel_led14, 1, 3);
+            this.tableLayoutPanel39.Controls.Add(this.panel_led13, 0, 3);
+            this.tableLayoutPanel39.Controls.Add(this.panel_led12, 3, 2);
+            this.tableLayoutPanel39.Controls.Add(this.panel_led11, 2, 2);
+            this.tableLayoutPanel39.Controls.Add(this.panel_led10, 1, 2);
+            this.tableLayoutPanel39.Controls.Add(this.panel_led9, 0, 2);
+            this.tableLayoutPanel39.Controls.Add(this.panel_led8, 3, 1);
+            this.tableLayoutPanel39.Controls.Add(this.panel_led7, 2, 1);
+            this.tableLayoutPanel39.Controls.Add(this.panel_led6, 1, 1);
+            this.tableLayoutPanel39.Controls.Add(this.panel_led5, 0, 1);
+            this.tableLayoutPanel39.Controls.Add(this.panel_led4, 3, 0);
+            this.tableLayoutPanel39.Controls.Add(this.panel_led3, 2, 0);
+            this.tableLayoutPanel39.Controls.Add(this.panel_led2, 1, 0);
+            this.tableLayoutPanel39.Controls.Add(this.panel_led1, 0, 0);
+            this.tableLayoutPanel39.Location = new System.Drawing.Point(544, 603);
+            this.tableLayoutPanel39.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel39.Name = "tableLayoutPanel39";
+            this.tableLayoutPanel39.RowCount = 4;
+            this.tableLayoutPanel39.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel39.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel39.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel39.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel39.Size = new System.Drawing.Size(537, 344);
+            this.tableLayoutPanel39.TabIndex = 1;
+            // 
+            // panel_led16
+            // 
+            this.panel_led16.BackColor = System.Drawing.Color.DarkGray;
+            this.panel_led16.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel_led16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_led16.Location = new System.Drawing.Point(406, 262);
+            this.panel_led16.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_led16.Name = "panel_led16";
+            this.panel_led16.Size = new System.Drawing.Size(127, 78);
+            this.panel_led16.TabIndex = 17;
+            // 
+            // panel_led15
+            // 
+            this.panel_led15.BackColor = System.Drawing.Color.DarkGray;
+            this.panel_led15.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel_led15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_led15.Location = new System.Drawing.Point(272, 262);
+            this.panel_led15.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_led15.Name = "panel_led15";
+            this.panel_led15.Size = new System.Drawing.Size(126, 78);
+            this.panel_led15.TabIndex = 16;
+            // 
+            // panel_led14
+            // 
+            this.panel_led14.BackColor = System.Drawing.Color.DarkGray;
+            this.panel_led14.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel_led14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_led14.Location = new System.Drawing.Point(138, 262);
+            this.panel_led14.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_led14.Name = "panel_led14";
+            this.panel_led14.Size = new System.Drawing.Size(126, 78);
+            this.panel_led14.TabIndex = 15;
+            // 
+            // panel_led13
+            // 
+            this.panel_led13.BackColor = System.Drawing.Color.DarkGray;
+            this.panel_led13.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel_led13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_led13.Location = new System.Drawing.Point(4, 262);
+            this.panel_led13.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_led13.Name = "panel_led13";
+            this.panel_led13.Size = new System.Drawing.Size(126, 78);
+            this.panel_led13.TabIndex = 14;
+            // 
+            // panel_led12
+            // 
+            this.panel_led12.BackColor = System.Drawing.Color.DarkGray;
+            this.panel_led12.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel_led12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_led12.Location = new System.Drawing.Point(406, 176);
+            this.panel_led12.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_led12.Name = "panel_led12";
+            this.panel_led12.Size = new System.Drawing.Size(127, 78);
+            this.panel_led12.TabIndex = 13;
+            // 
+            // panel_led11
+            // 
+            this.panel_led11.BackColor = System.Drawing.Color.DarkGray;
+            this.panel_led11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel_led11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_led11.Location = new System.Drawing.Point(272, 176);
+            this.panel_led11.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_led11.Name = "panel_led11";
+            this.panel_led11.Size = new System.Drawing.Size(126, 78);
+            this.panel_led11.TabIndex = 12;
+            // 
+            // panel_led10
+            // 
+            this.panel_led10.BackColor = System.Drawing.Color.DarkGray;
+            this.panel_led10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel_led10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_led10.Location = new System.Drawing.Point(138, 176);
+            this.panel_led10.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_led10.Name = "panel_led10";
+            this.panel_led10.Size = new System.Drawing.Size(126, 78);
+            this.panel_led10.TabIndex = 11;
+            // 
+            // panel_led9
+            // 
+            this.panel_led9.BackColor = System.Drawing.Color.DarkGray;
+            this.panel_led9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel_led9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_led9.Location = new System.Drawing.Point(4, 176);
+            this.panel_led9.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_led9.Name = "panel_led9";
+            this.panel_led9.Size = new System.Drawing.Size(126, 78);
+            this.panel_led9.TabIndex = 10;
+            // 
+            // panel_led8
+            // 
+            this.panel_led8.BackColor = System.Drawing.Color.DarkGray;
+            this.panel_led8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel_led8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_led8.Location = new System.Drawing.Point(406, 90);
+            this.panel_led8.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_led8.Name = "panel_led8";
+            this.panel_led8.Size = new System.Drawing.Size(127, 78);
+            this.panel_led8.TabIndex = 9;
+            // 
+            // panel_led7
+            // 
+            this.panel_led7.BackColor = System.Drawing.Color.DarkGray;
+            this.panel_led7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel_led7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_led7.Location = new System.Drawing.Point(272, 90);
+            this.panel_led7.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_led7.Name = "panel_led7";
+            this.panel_led7.Size = new System.Drawing.Size(126, 78);
+            this.panel_led7.TabIndex = 8;
+            // 
+            // panel_led6
+            // 
+            this.panel_led6.BackColor = System.Drawing.Color.DarkGray;
+            this.panel_led6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel_led6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_led6.Location = new System.Drawing.Point(138, 90);
+            this.panel_led6.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_led6.Name = "panel_led6";
+            this.panel_led6.Size = new System.Drawing.Size(126, 78);
+            this.panel_led6.TabIndex = 7;
+            // 
+            // panel_led5
+            // 
+            this.panel_led5.BackColor = System.Drawing.Color.DarkGray;
+            this.panel_led5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel_led5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_led5.Location = new System.Drawing.Point(4, 90);
+            this.panel_led5.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_led5.Name = "panel_led5";
+            this.panel_led5.Size = new System.Drawing.Size(126, 78);
+            this.panel_led5.TabIndex = 6;
+            // 
+            // panel_led4
+            // 
+            this.panel_led4.BackColor = System.Drawing.Color.DarkGray;
+            this.panel_led4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel_led4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_led4.Location = new System.Drawing.Point(406, 4);
+            this.panel_led4.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_led4.Name = "panel_led4";
+            this.panel_led4.Size = new System.Drawing.Size(127, 78);
+            this.panel_led4.TabIndex = 5;
+            // 
+            // panel_led3
+            // 
+            this.panel_led3.BackColor = System.Drawing.Color.DarkGray;
+            this.panel_led3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel_led3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_led3.Location = new System.Drawing.Point(272, 4);
+            this.panel_led3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_led3.Name = "panel_led3";
+            this.panel_led3.Size = new System.Drawing.Size(126, 78);
+            this.panel_led3.TabIndex = 4;
+            // 
+            // panel_led2
+            // 
+            this.panel_led2.BackColor = System.Drawing.Color.DarkGray;
+            this.panel_led2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel_led2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_led2.Location = new System.Drawing.Point(138, 4);
+            this.panel_led2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_led2.Name = "panel_led2";
+            this.panel_led2.Size = new System.Drawing.Size(126, 78);
+            this.panel_led2.TabIndex = 3;
+            // 
+            // panel_led1
+            // 
+            this.panel_led1.BackColor = System.Drawing.Color.DarkGray;
+            this.panel_led1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel_led1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_led1.Location = new System.Drawing.Point(4, 4);
+            this.panel_led1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_led1.Name = "panel_led1";
+            this.panel_led1.Size = new System.Drawing.Size(126, 78);
+            this.panel_led1.TabIndex = 2;
+            // 
+            // tableLayoutPanel38
+            // 
+            this.tableLayoutPanel38.ColumnCount = 4;
+            this.tableLayoutPanel38.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel38.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel38.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel38.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel38.Controls.Add(this.bt_led16, 3, 3);
+            this.tableLayoutPanel38.Controls.Add(this.bt_led15, 2, 3);
+            this.tableLayoutPanel38.Controls.Add(this.bt_led14, 1, 3);
+            this.tableLayoutPanel38.Controls.Add(this.bt_led13, 0, 3);
+            this.tableLayoutPanel38.Controls.Add(this.bt_led12, 3, 2);
+            this.tableLayoutPanel38.Controls.Add(this.bt_led11, 2, 2);
+            this.tableLayoutPanel38.Controls.Add(this.bt_led10, 1, 2);
+            this.tableLayoutPanel38.Controls.Add(this.bt_led9, 0, 2);
+            this.tableLayoutPanel38.Controls.Add(this.bt_led8, 3, 1);
+            this.tableLayoutPanel38.Controls.Add(this.bt_led7, 2, 1);
+            this.tableLayoutPanel38.Controls.Add(this.bt_led6, 1, 1);
+            this.tableLayoutPanel38.Controls.Add(this.bt_led5, 0, 1);
+            this.tableLayoutPanel38.Controls.Add(this.bt_led4, 3, 0);
+            this.tableLayoutPanel38.Controls.Add(this.bt_led3, 2, 0);
+            this.tableLayoutPanel38.Controls.Add(this.bt_led2, 1, 0);
+            this.tableLayoutPanel38.Controls.Add(this.bt_led1, 0, 0);
+            this.tableLayoutPanel38.Location = new System.Drawing.Point(117, 70);
+            this.tableLayoutPanel38.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel38.Name = "tableLayoutPanel38";
+            this.tableLayoutPanel38.RowCount = 4;
+            this.tableLayoutPanel38.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel38.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel38.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel38.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel38.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel38.Size = new System.Drawing.Size(537, 344);
+            this.tableLayoutPanel38.TabIndex = 0;
+            // 
+            // bt_led16
+            // 
+            this.bt_led16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bt_led16.Location = new System.Drawing.Point(406, 262);
+            this.bt_led16.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_led16.Name = "bt_led16";
+            this.bt_led16.Size = new System.Drawing.Size(127, 78);
+            this.bt_led16.TabIndex = 15;
+            this.bt_led16.Text = "LED16";
+            this.bt_led16.UseVisualStyleBackColor = true;
+            // 
+            // bt_led15
+            // 
+            this.bt_led15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bt_led15.Location = new System.Drawing.Point(272, 262);
+            this.bt_led15.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_led15.Name = "bt_led15";
+            this.bt_led15.Size = new System.Drawing.Size(126, 78);
+            this.bt_led15.TabIndex = 14;
+            this.bt_led15.Text = "LED15";
+            this.bt_led15.UseVisualStyleBackColor = true;
+            // 
+            // bt_led14
+            // 
+            this.bt_led14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bt_led14.Location = new System.Drawing.Point(138, 262);
+            this.bt_led14.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_led14.Name = "bt_led14";
+            this.bt_led14.Size = new System.Drawing.Size(126, 78);
+            this.bt_led14.TabIndex = 13;
+            this.bt_led14.Text = "LED14";
+            this.bt_led14.UseVisualStyleBackColor = true;
+            // 
+            // bt_led13
+            // 
+            this.bt_led13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bt_led13.Location = new System.Drawing.Point(4, 262);
+            this.bt_led13.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_led13.Name = "bt_led13";
+            this.bt_led13.Size = new System.Drawing.Size(126, 78);
+            this.bt_led13.TabIndex = 12;
+            this.bt_led13.Text = "LED13";
+            this.bt_led13.UseVisualStyleBackColor = true;
+            // 
+            // bt_led12
+            // 
+            this.bt_led12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bt_led12.Location = new System.Drawing.Point(406, 176);
+            this.bt_led12.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_led12.Name = "bt_led12";
+            this.bt_led12.Size = new System.Drawing.Size(127, 78);
+            this.bt_led12.TabIndex = 11;
+            this.bt_led12.Text = "LED12";
+            this.bt_led12.UseVisualStyleBackColor = true;
+            // 
+            // bt_led11
+            // 
+            this.bt_led11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bt_led11.Location = new System.Drawing.Point(272, 176);
+            this.bt_led11.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_led11.Name = "bt_led11";
+            this.bt_led11.Size = new System.Drawing.Size(126, 78);
+            this.bt_led11.TabIndex = 10;
+            this.bt_led11.Text = "LED11";
+            this.bt_led11.UseVisualStyleBackColor = true;
+            // 
+            // bt_led10
+            // 
+            this.bt_led10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bt_led10.Location = new System.Drawing.Point(138, 176);
+            this.bt_led10.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_led10.Name = "bt_led10";
+            this.bt_led10.Size = new System.Drawing.Size(126, 78);
+            this.bt_led10.TabIndex = 9;
+            this.bt_led10.Text = "LED10";
+            this.bt_led10.UseVisualStyleBackColor = true;
+            // 
+            // bt_led9
+            // 
+            this.bt_led9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bt_led9.Location = new System.Drawing.Point(4, 176);
+            this.bt_led9.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_led9.Name = "bt_led9";
+            this.bt_led9.Size = new System.Drawing.Size(126, 78);
+            this.bt_led9.TabIndex = 8;
+            this.bt_led9.Text = "LED9";
+            this.bt_led9.UseVisualStyleBackColor = true;
+            // 
+            // bt_led8
+            // 
+            this.bt_led8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bt_led8.Location = new System.Drawing.Point(406, 90);
+            this.bt_led8.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_led8.Name = "bt_led8";
+            this.bt_led8.Size = new System.Drawing.Size(127, 78);
+            this.bt_led8.TabIndex = 7;
+            this.bt_led8.Text = "LED8";
+            this.bt_led8.UseVisualStyleBackColor = true;
+            // 
+            // bt_led7
+            // 
+            this.bt_led7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bt_led7.Location = new System.Drawing.Point(272, 90);
+            this.bt_led7.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_led7.Name = "bt_led7";
+            this.bt_led7.Size = new System.Drawing.Size(126, 78);
+            this.bt_led7.TabIndex = 6;
+            this.bt_led7.Text = "LED7";
+            this.bt_led7.UseVisualStyleBackColor = true;
+            // 
+            // bt_led6
+            // 
+            this.bt_led6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bt_led6.Location = new System.Drawing.Point(138, 90);
+            this.bt_led6.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_led6.Name = "bt_led6";
+            this.bt_led6.Size = new System.Drawing.Size(126, 78);
+            this.bt_led6.TabIndex = 5;
+            this.bt_led6.Text = "LED6";
+            this.bt_led6.UseVisualStyleBackColor = true;
+            // 
+            // bt_led5
+            // 
+            this.bt_led5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bt_led5.Location = new System.Drawing.Point(4, 90);
+            this.bt_led5.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_led5.Name = "bt_led5";
+            this.bt_led5.Size = new System.Drawing.Size(126, 78);
+            this.bt_led5.TabIndex = 4;
+            this.bt_led5.Text = "LED5";
+            this.bt_led5.UseVisualStyleBackColor = true;
+            // 
+            // bt_led4
+            // 
+            this.bt_led4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bt_led4.Location = new System.Drawing.Point(406, 4);
+            this.bt_led4.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_led4.Name = "bt_led4";
+            this.bt_led4.Size = new System.Drawing.Size(127, 78);
+            this.bt_led4.TabIndex = 3;
+            this.bt_led4.Text = "LED4";
+            this.bt_led4.UseVisualStyleBackColor = true;
+            // 
+            // bt_led3
+            // 
+            this.bt_led3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bt_led3.Location = new System.Drawing.Point(272, 4);
+            this.bt_led3.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_led3.Name = "bt_led3";
+            this.bt_led3.Size = new System.Drawing.Size(126, 78);
+            this.bt_led3.TabIndex = 2;
+            this.bt_led3.Text = "LED3";
+            this.bt_led3.UseVisualStyleBackColor = true;
+            // 
+            // bt_led2
+            // 
+            this.bt_led2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bt_led2.Location = new System.Drawing.Point(138, 4);
+            this.bt_led2.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_led2.Name = "bt_led2";
+            this.bt_led2.Size = new System.Drawing.Size(126, 78);
+            this.bt_led2.TabIndex = 1;
+            this.bt_led2.Text = "LED2";
+            this.bt_led2.UseVisualStyleBackColor = true;
+            // 
+            // bt_led1
+            // 
+            this.bt_led1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bt_led1.Location = new System.Drawing.Point(4, 4);
+            this.bt_led1.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_led1.Name = "bt_led1";
+            this.bt_led1.Size = new System.Drawing.Size(126, 78);
+            this.bt_led1.TabIndex = 0;
+            this.bt_led1.Text = "LED1";
+            this.bt_led1.UseVisualStyleBackColor = true;
             // 
             // serialPort
             // 
@@ -3415,7 +4120,7 @@ namespace ASICamera_demo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2424, 1222);
+            this.ClientSize = new System.Drawing.Size(2415, 1216);
             this.Controls.Add(this.splitContainer1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form2";
@@ -3553,6 +4258,10 @@ namespace ASICamera_demo
             this.tableLayoutPanel36.ResumeLayout(false);
             this.tableLayoutPanel36.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ud_meter_exptime)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tableLayoutPanel39.ResumeLayout(false);
+            this.tableLayoutPanel38.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3792,6 +4501,58 @@ namespace ASICamera_demo
         private System.Windows.Forms.Button bt_mono_next;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button bt_save_copy;
+        private System.Windows.Forms.Button bt_auto_mono_meter;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button bt_savespec_next;
+        private System.Windows.Forms.Button bt_savephoto_next;
+        private System.Windows.Forms.CheckBox checkBox_exposureAuto_copy;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button bt_savephoto_nextled;
+        private System.Windows.Forms.Button bt_autophoto_led;
+        private System.Windows.Forms.ComboBox cb_foldername2;
+        private System.Windows.Forms.ComboBox cb_foldername1;
+        private System.Windows.Forms.Button bt_next_foldername;
+        private System.Windows.Forms.Button bt_mono_544;
+        private System.Windows.Forms.Button bt_mono_394;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel38;
+        private System.Windows.Forms.Button bt_led16;
+        private System.Windows.Forms.Button bt_led15;
+        private System.Windows.Forms.Button bt_led14;
+        private System.Windows.Forms.Button bt_led13;
+        private System.Windows.Forms.Button bt_led12;
+        private System.Windows.Forms.Button bt_led11;
+        private System.Windows.Forms.Button bt_led10;
+        private System.Windows.Forms.Button bt_led9;
+        private System.Windows.Forms.Button bt_led8;
+        private System.Windows.Forms.Button bt_led7;
+        private System.Windows.Forms.Button bt_led6;
+        private System.Windows.Forms.Button bt_led5;
+        private System.Windows.Forms.Button bt_led4;
+        private System.Windows.Forms.Button bt_led3;
+        private System.Windows.Forms.Button bt_led2;
+        private System.Windows.Forms.Button bt_led1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel39;
+        private System.Windows.Forms.Panel panel_led12;
+        private System.Windows.Forms.Panel panel_led11;
+        private System.Windows.Forms.Panel panel_led10;
+        private System.Windows.Forms.Panel panel_led9;
+        private System.Windows.Forms.Panel panel_led8;
+        private System.Windows.Forms.Panel panel_led7;
+        private System.Windows.Forms.Panel panel_led6;
+        private System.Windows.Forms.Panel panel_led5;
+        private System.Windows.Forms.Panel panel_led4;
+        private System.Windows.Forms.Panel panel_led3;
+        private System.Windows.Forms.Panel panel_led2;
+        private System.Windows.Forms.Panel panel_led1;
+        private System.Windows.Forms.Panel panel_led16;
+        private System.Windows.Forms.Panel panel_led15;
+        private System.Windows.Forms.Panel panel_led14;
+        private System.Windows.Forms.Panel panel_led13;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button bt_encode_next;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
 
