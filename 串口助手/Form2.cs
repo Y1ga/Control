@@ -2361,6 +2361,7 @@ namespace ASICamera_demo
                 { 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1 },
                 { 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1 },
                 { 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
             };
             int row = comboBox1.SelectedIndex;
             // 保证在 0..5 之间
@@ -2378,10 +2379,41 @@ namespace ASICamera_demo
                 int v = spinBoxValues[row, col];
                 // 限定在控件范围内
                 v = Math.Max((int)spin.Minimum, Math.Min((int)spin.Maximum, v));
-
+                ledSpinBoxs[idx].Value = v * 100; // 更新 SpinBox 的值
                 // 直接根据 v>0 更新 Panel
                 panel.BackColor = (v > 0) ? Color.Lime : Color.DarkGray;
             }
+        }
+
+        private void bt_encode_next_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex < comboBox1.Items.Count - 1)
+            {
+                this.comboBox1.SelectedIndex++;
+            }
+            else
+            {
+                this.comboBox1.SelectedIndex = 0;
+            }
+            SendLEDValues();
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox_exposureAuto.Checked = !checkBox_exposureAuto.Checked;
+
+            if (checkBox_exposureAuto.Checked)
+            {
+                exposureAuto();
+            }
+            else
+            {
+                trackBar_exposure.Enabled = true;
+                spinBox_exposure.Enabled = true;
+                checkBox2.Checked = checkBox_exposureAuto.Checked;
+            }
+
+            //checkBox_ExpAuto_CheckedChanged(checkBox_exposureAuto, EventArgs.Empty);
         }
 
         private void ud_mono_wavelength_ValueChanged(object sender, EventArgs e)
