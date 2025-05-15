@@ -24,6 +24,9 @@ namespace ASICamera_demo
 {
     public partial class Form2 : Form
     {
+        // 用来存储界面上对应的 Panel（或 PictureBox、Button）对象
+        private Panel[] _ledPanels;
+
         #region data struct
         /*保存日志*/
         public static string log;
@@ -42,6 +45,7 @@ namespace ASICamera_demo
         System.Windows.Forms.NumericUpDown[] ledSpinBoxs = new System.Windows.Forms.NumericUpDown[
             16
         ];
+        private Button[] _ledButtons;
 
         // 自动曝光调整因子α, β
         private double alpha = 1;
@@ -57,7 +61,10 @@ namespace ASICamera_demo
         #endregion
 
         CmeMoCtrl ser;
-        double zeroPosition, correctionCoefficient, totalSteps;
+        double zeroPosition,
+            correctionCoefficient,
+            totalSteps;
+
         #region constructor
         private void Form2_Load(object sender, EventArgs e) //窗口加载事件
         {
@@ -109,6 +116,53 @@ namespace ASICamera_demo
             ledSpinBoxs[10] = numericUpDown11;
             ledSpinBoxs[11] = numericUpDown12;
             ledSpinBoxs[12] = numericUpDown13;
+            //混合编码
+            _ledButtons = new Button[]
+            {
+                bt_led1,
+                bt_led2,
+                bt_led3,
+                bt_led4,
+                bt_led5,
+                bt_led6,
+                bt_led7,
+                bt_led8,
+                bt_led9,
+                bt_led10,
+                bt_led11,
+                bt_led12,
+                bt_led13,
+                bt_led14,
+                bt_led15,
+                bt_led16,
+            };
+            // 1. 用字段名按顺序初始化数组
+            _ledPanels = new Panel[]
+            {
+                panel_led1,
+                panel_led2,
+                panel_led3,
+                panel_led4,
+                panel_led5,
+                panel_led6,
+                panel_led7,
+                panel_led8,
+                panel_led9,
+                panel_led10,
+                panel_led11,
+                panel_led12,
+                panel_led13,
+                panel_led14,
+                panel_led15,
+                panel_led16,
+            };
+
+            // 2）给每个按钮绑同一个点击事件
+            for (int i = 0; i < _ledButtons.Length; i++)
+            {
+                _ledButtons[i].Tag = i; // 把索引存到 Tag
+                _ledButtons[i].Click += LedButton_Click;
+            }
             // 此处过于粗心导致出错!!
             //ledSpinBoxs[13] = numericUpDown14;
             //ledSpinBoxs[14] = numericUpDown14;
@@ -118,6 +172,7 @@ namespace ASICamera_demo
             for (int i = 0; i < 16; i++)
             {
                 ledLabels[i].Text = "LED" + (i + 1);
+                ledSpinBoxs[i].Tag = i;
                 ledSpinBoxs[i].Maximum = 100;
                 ledSpinBoxs[i].Minimum = 0;
                 ledSpinBoxs[i].Value = 0;
@@ -139,7 +194,20 @@ namespace ASICamera_demo
             cbPortName.Items.AddRange(names);
             cbPortName.Text = cbPortName.Items[cbPortName.Items.Count - 1].ToString();
             OpenSerialPort();
+            this.cb_foldername1.SelectedIndex = 0;
+        }
 
+        private void LedButton_Click(object sender, EventArgs e)
+        {
+            var btn = sender as Button;
+            if (btn == null)
+                return;
+
+            int idx = (int)btn.Tag; // 假设你已经把 Tag 设成了该按钮对应的索引
+            var spin = ledSpinBoxs[idx];
+
+            // 如果当前是 0，就设为 100；否则一律设回 0
+            spin.Value = spin.Value == 0 ? 100 : 0;
         }
 
         LineSeries lineSeries = new LineSeries
@@ -148,13 +216,14 @@ namespace ASICamera_demo
             //PointGeometry = DefaultGeometries.Circle,
             PointGeometry = null, // 移除数据点标记
         };
+
         static (CmeMoCtrl, double, double, double) CmeMoInit(string portId = "COM9")
         {
             CmeMoCtrl ser = new CmeMoCtrl(portName: portId);
             var connectionInfo = ser.CheckConnection();
             Console.WriteLine($"Connection Info: {connectionInfo}");
 
-            ser.StartParameterQuery();  // 开始参数查询进程
+            ser.StartParameterQuery(); // 开始参数查询进程
 
             var systemParams = ser.QuerySystemParameters();
             double totalSteps = Convert.ToDouble(((dynamic)systemParams).TotalSteps);
@@ -164,8 +233,8 @@ namespace ASICamera_demo
                 Console.WriteLine($"System Parameters: {systemParams}");
             }
 
-            int gratingGroup = 0;  // 光栅组编号
-            int gratingNumber = 1;  // 光栅编号
+            int gratingGroup = 0; // 光栅组编号
+            int gratingNumber = 1; // 光栅编号
             var gratingParams = ser.QueryGratingParameters(gratingGroup, gratingNumber);
 
             if (gratingParams != null)
@@ -179,45 +248,50 @@ namespace ASICamera_demo
                 Console.WriteLine($"Filter Group Info: {filterGroupInfo}");
             }
 
-            var filterWorkingRange = ser.QueryFilterWorkingRange(1, 8);  // 查询光栅编号1，返回8个滤光片信息
+            var filterWorkingRange = ser.QueryFilterWorkingRange(1, 8); // 查询光栅编号1，返回8个滤光片信息
             if (filterWorkingRange != null)
             {
                 Console.WriteLine($"Filter Working Range: {filterWorkingRange}");
             }
 
-            var gratingSwitchPosition = ser.QueryGratingSwitchPosition();  // 查询光栅切换位置
+            var gratingSwitchPosition = ser.QueryGratingSwitchPosition(); // 查询光栅切换位置
             if (gratingSwitchPosition != null)
             {
                 Console.WriteLine($"Grating Switch Position: {gratingSwitchPosition}");
             }
 
-            string parallelExitPosition = ser.QueryParallelExitPosition();  // 查询双出口的1出口定位基准值
+            string parallelExitPosition = ser.QueryParallelExitPosition(); // 查询双出口的1出口定位基准值
             if (parallelExitPosition != null)
             {
                 Console.WriteLine($"Parallel Exit Position: {parallelExitPosition}");
             }
 
-            var exitAutoSwitchWavelength = ser.QueryExitAutoSwitchWavelength();  // 查询出口自动切换波长
+            var exitAutoSwitchWavelength = ser.QueryExitAutoSwitchWavelength(); // 查询出口自动切换波长
             if (exitAutoSwitchWavelength != null)
             {
                 Console.WriteLine($"Exit Auto Switch Wavelength: {exitAutoSwitchWavelength}");
             }
 
             double zeroPosition = Convert.ToDouble(((dynamic)gratingParams).ZeroPosition);
-            double correctionCoefficient = Convert.ToDouble(((dynamic)gratingParams).CorrectionCoefficient);
+            double correctionCoefficient = Convert.ToDouble(
+                ((dynamic)gratingParams).CorrectionCoefficient
+            );
 
-            Console.WriteLine($"Zero Position (Z): {zeroPosition}, Correction Coefficient (C): {correctionCoefficient}");
+            Console.WriteLine(
+                $"Zero Position (Z): {zeroPosition}, Correction Coefficient (C): {correctionCoefficient}"
+            );
 
-            ser.EndParameterQuery();  // 结束参数查询进程
+            ser.EndParameterQuery(); // 结束参数查询进程
 
             // ser.Reposition();  // 重新定位
             // Thread.Sleep(3000);
 
-            Console.WriteLine($"Current Position: {ser.QueryCurrentPosition()}");  // 查询当前位置
-            Console.WriteLine($"Current Grating: {ser.QueryCurrentGrating()}");  // 查询当前光栅
+            Console.WriteLine($"Current Position: {ser.QueryCurrentPosition()}"); // 查询当前位置
+            Console.WriteLine($"Current Grating: {ser.QueryCurrentGrating()}"); // 查询当前光栅
 
             return (ser, zeroPosition, correctionCoefficient, totalSteps);
         }
+
         // Constructor
         public Form2()
         {
@@ -845,10 +919,28 @@ namespace ASICamera_demo
         #region SerialPort
         private void UpdateLED(object sender, EventArgs e)
         {
+            var spin = sender as NumericUpDown;
+            if (spin == null)
+                return;
+
+            int idx = (int)spin.Tag;
             for (int i = 0; i < 16; i++)
             {
                 led_array.Value[i] = (byte)ledSpinBoxs[i].Value;
             }
+            UpdatePanelBySpin(idx);
+        }
+
+        // 根据 _ledSpinBoxs[idx].Value 更新对应 panel 的颜色
+        private void UpdatePanelBySpin(int idx)
+        {
+            if (idx < 0 || idx >= _ledPanels.Length)
+                return;
+
+            bool isOn = ledSpinBoxs[idx].Value > 0;
+            _ledPanels[idx].BackColor = isOn
+                ? Color.Lime // “亮”时绿色
+                : Color.DarkGray; // “暗”时灰色
         }
 
         private string BytesToText(byte[] bytes, string encoding) //字节流转文本
@@ -1208,6 +1300,7 @@ namespace ASICamera_demo
                     + Math.Round(Convert.ToDouble(m_camera.Std_hist))
                     + "]\n";
                 save_img(save_img_dir_path);
+                SemaphoreHolder.is_manual = false;
             }
             else if (flag == 5)
             {
@@ -2085,7 +2178,6 @@ namespace ASICamera_demo
         {
             // 直接调用ValueChanged事件处理方法
             ud_mono_wavelength_ValueChanged(ud_mono_wavelength, EventArgs.Empty);
-        
         }
 
         private void bt_mono_next_Click(object sender, EventArgs e)
@@ -2105,24 +2197,213 @@ namespace ASICamera_demo
             manual_Click(manual_save_button, EventArgs.Empty);
         }
 
+        private void bt_open_meter_Click_1(object sender, EventArgs e) { }
+
+        private void bt_save_spec_Click_1(object sender, EventArgs e) { }
+
+        private void bt_auto_mono_meter_Click(object sender, EventArgs e)
+        {
+            Thread thread = new Thread(() =>
+            {
+                for (int i = 0; i < 31; i++)
+                {
+                    bt_savespec_next_Click(bt_savespec_next, null);
+
+                    Thread.Sleep(2000);
+                }
+            });
+            thread.Start();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            bt_save_spec_Click(bt_save_spec, null);
+        }
+
+        private void bt_savespec_next_Click(object sender, EventArgs e)
+        {
+            bt_save_spec_Click(bt_save_spec, null);
+            while (SemaphoreHolder.is_manual) { }
+            bt_mono_next_Click(bt_mono_next, null);
+        }
+
+        private void bt_savephoto_next_Click(object sender, EventArgs e)
+        {
+            manual_Click(manual_save_button, null);
+            while (SemaphoreHolder.is_manual) { }
+            bt_mono_next_Click(bt_mono_next, null);
+            Thread.Sleep(1000);
+        }
+
+        private void checkBox_exposureAuto_copy_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox_exposureAuto.Checked = !checkBox_exposureAuto.Checked;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Thread thread = new Thread(() =>
+            {
+                var path = m_camera.SelectedFolderPath + "/" + cb_foldername1.Text;
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                for (int i = 0; i < 31; i++)
+                {
+                    checkBox_exposureAuto.Checked = true;
+                    Thread.Sleep(200);
+                    while (checkBox_exposureAuto.Checked) { }
+                    bt_savephoto_next_Click(bt_savephoto_next, null);
+                }
+                manual_current_index.Value = 0;
+                foreach (var pngFile in Directory.GetFiles(m_camera.SelectedFolderPath, "*.png"))
+                {
+                    string destFile = Path.Combine(path, Path.GetFileName(pngFile));
+                    File.Move(pngFile, destFile);
+                }
+                if (cb_foldername1.SelectedIndex < cb_foldername1.Items.Count - 1)
+                {
+                    this.cb_foldername1.SelectedIndex++;
+                }
+                else
+                {
+                    this.cb_foldername1.SelectedIndex = 0;
+                }
+            });
+            thread.Start();
+        }
+
+        private void bt_savephoto_nextled_Click(object sender, EventArgs e)
+        {
+            manual_Click(manual_save_button, null);
+            while (SemaphoreHolder.is_manual) { }
+            pwm_exp_Click(button_next, null);
+            SemaphoreHolder.is_changed = true;
+            SemaphoreHolder.next_ok = true;
+            while (!SemaphoreHolder.update_ok) { }
+            SemaphoreHolder.update_ok = false;
+
+            //Thread.Sleep(2000);
+        }
+
+        private void bt_autophoto_led_Click(object sender, EventArgs e)
+        {
+            Thread thread = new Thread(() =>
+            {
+                SemaphoreHolder.is_auto_save = true;
+                var path = m_camera.SelectedFolderPath + "/" + cb_foldername1.Text;
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                for (int i = 0; i < 13; i++)
+                {
+                    checkBox_exposureAuto.Checked = true;
+
+                    while (checkBox_exposureAuto.Checked) { }
+
+                    bt_savephoto_nextled_Click(bt_savephoto_nextled, null);
+                }
+                manual_current_index.Value = 0;
+                foreach (var pngFile in Directory.GetFiles(m_camera.SelectedFolderPath, "*.png"))
+                {
+                    string destFile = Path.Combine(path, Path.GetFileName(pngFile));
+                    File.Move(pngFile, destFile);
+                }
+                if (cb_foldername1.SelectedIndex < cb_foldername1.Items.Count - 1)
+                {
+                    this.cb_foldername1.SelectedIndex++;
+                }
+                else
+                {
+                    this.cb_foldername1.SelectedIndex = 0;
+                }
+                SemaphoreHolder.is_auto_save = false;
+            });
+            thread.Start();
+        }
+
+        private void bt_next_foldername_Click(object sender, EventArgs e)
+        {
+            if (cb_foldername1.SelectedIndex < cb_foldername1.Items.Count - 1)
+            {
+                this.cb_foldername1.SelectedIndex++;
+            }
+            else
+            {
+                this.cb_foldername1.SelectedIndex = 0;
+            }
+        }
+
+        private void bt_mono_394_Click(object sender, EventArgs e)
+        {
+            this.ud_mono_wavelength.Value = 394;
+        }
+
+        private void bt_mono_544_Click(object sender, EventArgs e)
+        {
+            this.ud_mono_wavelength.Value = 544;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            SendLEDValues();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int[,] spinBoxValues = new int[,]
+            {
+                { 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0 },
+                { 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1 },
+                { 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1 },
+                { 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1 },
+                { 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0 },
+            };
+            int row = comboBox1.SelectedIndex;
+            // 保证在 0..5 之间
+            if (row < 0 || row >= spinBoxValues.GetLength(0))
+                return;
+
+            // 从第 1 个到第 13 个 SpinBox
+            for (int col = 0; col < 13; col++)
+            {
+                int idx = col + 1; // ledSpinBoxs[1..13]
+                var spin = ledSpinBoxs[idx];
+                var panel = _ledPanels[idx];
+
+                // 从表里取值
+                int v = spinBoxValues[row, col];
+                // 限定在控件范围内
+                v = Math.Max((int)spin.Minimum, Math.Min((int)spin.Maximum, v));
+
+                // 直接根据 v>0 更新 Panel
+                panel.BackColor = (v > 0) ? Color.Lime : Color.DarkGray;
+            }
+        }
+
         private void ud_mono_wavelength_ValueChanged(object sender, EventArgs e)
         {
-
             // 移动到目标位置
             var wav = (double)ud_mono_wavelength.Value;
-            int pos = CmeMoCtrl.Wavelength2Position(wav, correctionCoefficient / 1000.0, zeroPosition, totalSteps);
+            int pos = CmeMoCtrl.Wavelength2Position(
+                wav,
+                correctionCoefficient / 1000.0,
+                zeroPosition,
+                totalSteps
+            );
             string moveResponse = ser.MoveToWavelength(pos);
         }
 
         private void bt_open_monometer_Click(object sender, EventArgs e)
         {
-
             (ser, zeroPosition, correctionCoefficient, totalSteps) = CmeMoInit();
 
             // 设置速度为255
             ser.SetSpeed(255);
             Console.WriteLine($"Current Speed: {ser.QueryScanningSpeed()}"); // 查询扫描速度
-
         }
     }
 }
