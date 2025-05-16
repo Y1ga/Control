@@ -272,6 +272,7 @@ namespace ASICamera_demo
             this.label52 = new System.Windows.Forms.Label();
             this.ud_meter_exptime = new System.Windows.Forms.NumericUpDown();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.bt_auto_next_encode = new System.Windows.Forms.Button();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.bt_encode_next = new System.Windows.Forms.Button();
@@ -1379,6 +1380,7 @@ namespace ASICamera_demo
             this.cb_foldername1.Items.AddRange(new object[] {
             "sum_A",
             "y",
+            "y2",
             "mono2",
             "mono1"});
             this.cb_foldername1.Location = new System.Drawing.Point(860, 1036);
@@ -1563,7 +1565,7 @@ namespace ASICamera_demo
             this.ud_get_video_count.Size = new System.Drawing.Size(98, 30);
             this.ud_get_video_count.TabIndex = 38;
             this.ud_get_video_count.Value = new decimal(new int[] {
-            7,
+            6,
             0,
             0,
             0});
@@ -1676,7 +1678,7 @@ namespace ASICamera_demo
             "6",
             "7",
             "8"});
-            this.cbDataBits.Location = new System.Drawing.Point(100, 6);
+            this.cbDataBits.Location = new System.Drawing.Point(100, 5);
             this.cbDataBits.Margin = new System.Windows.Forms.Padding(4);
             this.cbDataBits.Name = "cbDataBits";
             this.cbDataBits.Size = new System.Drawing.Size(85, 28);
@@ -1702,7 +1704,7 @@ namespace ASICamera_demo
             "1",
             "1.5",
             "2"});
-            this.cbStopBits.Location = new System.Drawing.Point(100, 44);
+            this.cbStopBits.Location = new System.Drawing.Point(100, 43);
             this.cbStopBits.Margin = new System.Windows.Forms.Padding(4);
             this.cbStopBits.Name = "cbStopBits";
             this.cbStopBits.Size = new System.Drawing.Size(85, 28);
@@ -1717,7 +1719,7 @@ namespace ASICamera_demo
             "无",
             "奇校验",
             "偶校验"});
-            this.cbParity.Location = new System.Drawing.Point(100, 83);
+            this.cbParity.Location = new System.Drawing.Point(100, 82);
             this.cbParity.Margin = new System.Windows.Forms.Padding(4);
             this.cbParity.Name = "cbParity";
             this.cbParity.Size = new System.Drawing.Size(85, 28);
@@ -1884,7 +1886,7 @@ namespace ASICamera_demo
             this.cbSendMode.Items.AddRange(new object[] {
             "HEX模式",
             "文本模式"});
-            this.cbSendMode.Location = new System.Drawing.Point(94, 9);
+            this.cbSendMode.Location = new System.Drawing.Point(94, 8);
             this.cbSendMode.Margin = new System.Windows.Forms.Padding(4);
             this.cbSendMode.Name = "cbSendMode";
             this.cbSendMode.Size = new System.Drawing.Size(172, 28);
@@ -1909,7 +1911,7 @@ namespace ASICamera_demo
             this.cbSendCoding.Items.AddRange(new object[] {
             "GBK",
             "UTF-8"});
-            this.cbSendCoding.Location = new System.Drawing.Point(94, 56);
+            this.cbSendCoding.Location = new System.Drawing.Point(94, 55);
             this.cbSendCoding.Margin = new System.Windows.Forms.Padding(4);
             this.cbSendCoding.Name = "cbSendCoding";
             this.cbSendCoding.Size = new System.Drawing.Size(172, 28);
@@ -1966,7 +1968,7 @@ namespace ASICamera_demo
             this.cbReceiveMode.Items.AddRange(new object[] {
             "HEX模式",
             "文本模式"});
-            this.cbReceiveMode.Location = new System.Drawing.Point(94, 9);
+            this.cbReceiveMode.Location = new System.Drawing.Point(94, 8);
             this.cbReceiveMode.Margin = new System.Windows.Forms.Padding(4);
             this.cbReceiveMode.Name = "cbReceiveMode";
             this.cbReceiveMode.Size = new System.Drawing.Size(172, 28);
@@ -1991,7 +1993,7 @@ namespace ASICamera_demo
             this.cbReceiveCoding.Items.AddRange(new object[] {
             "GBK",
             "UTF-8"});
-            this.cbReceiveCoding.Location = new System.Drawing.Point(94, 56);
+            this.cbReceiveCoding.Location = new System.Drawing.Point(94, 55);
             this.cbReceiveCoding.Margin = new System.Windows.Forms.Padding(4);
             this.cbReceiveCoding.Name = "cbReceiveCoding";
             this.cbReceiveCoding.Size = new System.Drawing.Size(172, 28);
@@ -2177,7 +2179,7 @@ namespace ASICamera_demo
             this.cbPortName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cbPortName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPortName.FormattingEnabled = true;
-            this.cbPortName.Location = new System.Drawing.Point(94, 10);
+            this.cbPortName.Location = new System.Drawing.Point(94, 4);
             this.cbPortName.Margin = new System.Windows.Forms.Padding(4);
             this.cbPortName.Name = "cbPortName";
             this.cbPortName.Size = new System.Drawing.Size(172, 39);
@@ -2205,7 +2207,7 @@ namespace ASICamera_demo
             "38400",
             "115200",
             "460800"});
-            this.cbBaudRate.Location = new System.Drawing.Point(94, 56);
+            this.cbBaudRate.Location = new System.Drawing.Point(94, 50);
             this.cbBaudRate.Margin = new System.Windows.Forms.Padding(4);
             this.cbBaudRate.Name = "cbBaudRate";
             this.cbBaudRate.Size = new System.Drawing.Size(172, 39);
@@ -3613,6 +3615,7 @@ namespace ASICamera_demo
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage2.Controls.Add(this.bt_auto_next_encode);
             this.tabPage2.Controls.Add(this.checkBox2);
             this.tabPage2.Controls.Add(this.checkBox1);
             this.tabPage2.Controls.Add(this.bt_encode_next);
@@ -3627,6 +3630,17 @@ namespace ASICamera_demo
             this.tabPage2.Size = new System.Drawing.Size(1525, 1186);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Others";
+            // 
+            // bt_auto_next_encode
+            // 
+            this.bt_auto_next_encode.Location = new System.Drawing.Point(442, 456);
+            this.bt_auto_next_encode.Margin = new System.Windows.Forms.Padding(4);
+            this.bt_auto_next_encode.Name = "bt_auto_next_encode";
+            this.bt_auto_next_encode.Size = new System.Drawing.Size(208, 110);
+            this.bt_auto_next_encode.TabIndex = 10;
+            this.bt_auto_next_encode.Text = "Auto Encode";
+            this.bt_auto_next_encode.UseVisualStyleBackColor = true;
+            this.bt_auto_next_encode.Click += new System.EventHandler(this.bt_auto_next_encode_Click);
             // 
             // checkBox2
             // 
@@ -4553,6 +4567,7 @@ namespace ASICamera_demo
         private System.Windows.Forms.Button bt_encode_next;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Button bt_auto_next_encode;
     }
 }
 

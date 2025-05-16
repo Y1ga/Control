@@ -22,6 +22,7 @@ using ZWOptical.ASISDK;
 
 namespace ASICamera_demo
 {
+
     public partial class Form2 : Form
     {
         // 用来存储界面上对应的 Panel（或 PictureBox、Button）对象
@@ -2232,7 +2233,10 @@ namespace ASICamera_demo
             manual_Click(manual_save_button, null);
             while (SemaphoreHolder.is_manual) { }
             bt_mono_next_Click(bt_mono_next, null);
-            Thread.Sleep(1000);
+            SemaphoreHolder.is_0515 = true;
+
+            while (SemaphoreHolder.is_0515) { }
+            //Thread.Sleep(1000);
         }
 
         private void checkBox_exposureAuto_copy_CheckedChanged(object sender, EventArgs e)
@@ -2252,14 +2256,25 @@ namespace ASICamera_demo
                 for (int i = 0; i < 31; i++)
                 {
                     checkBox_exposureAuto.Checked = true;
-                    Thread.Sleep(200);
+                    //Thread.Sleep(200);
                     while (checkBox_exposureAuto.Checked) { }
                     bt_savephoto_next_Click(bt_savephoto_next, null);
                 }
                 manual_current_index.Value = 0;
                 foreach (var pngFile in Directory.GetFiles(m_camera.SelectedFolderPath, "*.png"))
                 {
-                    string destFile = Path.Combine(path, Path.GetFileName(pngFile));
+                    string fileName = Path.GetFileName(pngFile);
+
+                    // 检查文件名是否包含"Violet32_"
+                    if (fileName.Contains("Violet32_"))
+                    {
+                        MessageBox.Show($"警告：检测到特殊文件名 '{fileName}'！",
+                                       "文件名冲突",
+                                       MessageBoxButtons.OK,
+                                       MessageBoxIcon.Warning);
+                    }
+
+                    string destFile = Path.Combine(path, fileName);
                     File.Move(pngFile, destFile);
                 }
                 if (cb_foldername1.SelectedIndex < cb_foldername1.Items.Count - 1)
@@ -2276,27 +2291,56 @@ namespace ASICamera_demo
 
         private void bt_savephoto_nextled_Click(object sender, EventArgs e)
         {
-            manual_Click(manual_save_button, null);
-            while (SemaphoreHolder.is_manual) { }
-            pwm_exp_Click(button_next, null);
-            SemaphoreHolder.is_changed = true;
-            SemaphoreHolder.next_ok = true;
-            while (!SemaphoreHolder.update_ok) { }
-            SemaphoreHolder.update_ok = false;
-
-            //Thread.Sleep(2000);
+            if (sender == bt_savephoto_nextled)
+            {
+                manual_Click(manual_save_button, null);
+                while (SemaphoreHolder.is_manual) { }
+                pwm_exp_Click(button_next, null);
+                SemaphoreHolder.is_changed = true;
+                SemaphoreHolder.next_ok = true;
+                while (!SemaphoreHolder.update_ok) { }
+                SemaphoreHolder.update_ok = false;
+            } else if (sender == bt_auto_next_encode)
+            {
+                manual_Click(manual_save_button, null);
+                while (SemaphoreHolder.is_manual) { }
+                bt_encode_next_Click(bt_encode_next, null);
+                SemaphoreHolder.is_changed = true;
+                SemaphoreHolder.next_ok = true;
+                while (!SemaphoreHolder.update_ok) { }
+                SemaphoreHolder.update_ok = false;
+            }
+           
         }
-
+        public static int clickCount = 0;
+        public static int betaValue = 35;
         private void bt_autophoto_led_Click(object sender, EventArgs e)
         {
+            
             Thread thread = new Thread(() =>
             {
+                for (int i = 0; i < 13; i++)
+                { ledSpinBoxs[i].Value = 0; }
+                ledSpinBoxs[1].Value = betaValue;
+                SendLEDValues();
+                
                 SemaphoreHolder.is_auto_save = true;
-                var path = m_camera.SelectedFolderPath + "/" + cb_foldername1.Text;
+                
+
+                // 生成文件夹后缀
+                string folderSuffix = clickCount == 0 ? "" : $"({clickCount + 1})";
+
+                // 生成文件夹名称
+                string folderName = $"sum_A{folderSuffix}";
+
+                var path = m_camera.SelectedFolderPath + "/" + folderName;
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
                 }
+
+                // 增加点击计数
+                clickCount++;
                 for (int i = 0; i < 13; i++)
                 {
                     checkBox_exposureAuto.Checked = true;
@@ -2305,10 +2349,23 @@ namespace ASICamera_demo
 
                     bt_savephoto_nextled_Click(bt_savephoto_nextled, null);
                 }
+                ledSpinBoxs[1].Value = 0;
+                SendLEDValues() ;
                 manual_current_index.Value = 0;
                 foreach (var pngFile in Directory.GetFiles(m_camera.SelectedFolderPath, "*.png"))
                 {
-                    string destFile = Path.Combine(path, Path.GetFileName(pngFile));
+                    string fileName = Path.GetFileName(pngFile);
+
+                    // 检查文件名是否包含"Violet32_"
+                    if (fileName.Contains("Violet32_"))
+                    {
+                        MessageBox.Show($"警告：检测到特殊文件名 '{fileName}'！",
+                                       "文件名冲突",
+                                       MessageBoxButtons.OK,
+                                       MessageBoxIcon.Warning);
+                    }
+
+                    string destFile = Path.Combine(path, fileName);
                     File.Move(pngFile, destFile);
                 }
                 if (cb_foldername1.SelectedIndex < cb_foldername1.Items.Count - 1)
@@ -2350,7 +2407,7 @@ namespace ASICamera_demo
         {
             SendLEDValues();
         }
-
+        
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
          
@@ -2364,6 +2421,13 @@ namespace ASICamera_demo
                 { 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0 },
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
             };
+            //spinBoxValues[5, 11] = 0;
+            //spinBoxValues[5, 10] = 0;
+            // 将第4行（索引3）的值复制到第6行（索引5）
+            //for (int col = 0; col < spinBoxValues.GetLength(1); col++)
+            //{
+            //    spinBoxValues[3, col] = spinBoxValues[5, col]; // 注意索引从0开始
+            //}
             int row = comboBox1.SelectedIndex;
             // 保证在 0..5 之间
             if (row < 0 || row >= spinBoxValues.GetLength(0))
@@ -2380,7 +2444,7 @@ namespace ASICamera_demo
                 int v = spinBoxValues[row, col];
                 // 限定在控件范围内
                 v = Math.Max((int)spin.Minimum, Math.Min((int)spin.Maximum, v));
-                ledSpinBoxs[idx].Value = v*100; // 更新 SpinBox 的值
+                ledSpinBoxs[idx].Value = v*betaValue; // 更新 SpinBox 的值
                 // 直接根据 v>0 更新 Panel
                 panel.BackColor = (v > 0) ? Color.Lime : Color.DarkGray;
             }
@@ -2397,6 +2461,7 @@ namespace ASICamera_demo
                 this.comboBox1.SelectedIndex = 0;
             }
             SendLEDValues();
+            //Thread.Sleep(1000);
         }
 
 
@@ -2417,6 +2482,74 @@ namespace ASICamera_demo
             }
    
             //checkBox_ExpAuto_CheckedChanged(checkBox_exposureAuto, EventArgs.Empty);
+        }
+
+        private int autoNextEncodeClickCount = 0; // 类级别变量记录点击次数
+
+        private void bt_auto_next_encode_Click(object sender, EventArgs e)
+        {
+            Thread thread = new Thread(() =>
+            {
+                //if (comboBox1.SelectedIndex == 6 || comboBox1.SelectedIndex == -1)
+                //{
+                //    //comboBox1.SelectedIndex = 0;
+                //    bt_encode_next_Click(bt_encode_next, null);
+                //}
+                comboBox1.SelectedIndex = 6;
+                bt_encode_next_Click(bt_encode_next, null);
+                SemaphoreHolder.is_auto_save = true;
+
+                // 生成文件夹后缀
+                string folderSuffix = autoNextEncodeClickCount == 0 ? "" : $"({autoNextEncodeClickCount + 1})";
+
+                // 生成文件夹名称
+                string folderName = $"sum_A2{folderSuffix}";
+
+                var path = m_camera.SelectedFolderPath + "/" + folderName;
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                // 增加点击计数
+                Interlocked.Increment(ref autoNextEncodeClickCount);
+                for (int i = 0; i < 6; i++)
+                {
+                    
+                    checkBox_exposureAuto.Checked = true;
+                   
+                    while (checkBox_exposureAuto.Checked) { }
+
+                    bt_savephoto_nextled_Click(bt_auto_next_encode, null);
+                }
+                manual_current_index.Value = 0;
+                foreach (var pngFile in Directory.GetFiles(m_camera.SelectedFolderPath, "*.png"))
+                {
+                    string fileName = Path.GetFileName(pngFile);
+
+                    // 检查文件名是否包含"Violet32_"
+                    if (fileName.Contains("Violet32_"))
+                    {
+                        MessageBox.Show($"警告：检测到特殊文件名 '{fileName}'！",
+                                       "文件名冲突",
+                                       MessageBoxButtons.OK,
+                                       MessageBoxIcon.Warning);
+                    }
+
+                    string destFile = Path.Combine(path, fileName);
+                    File.Move(pngFile, destFile);
+                }
+                if (cb_foldername1.SelectedIndex < cb_foldername1.Items.Count - 1)
+                {
+                    this.cb_foldername1.SelectedIndex++;
+                }
+                else
+                {
+                    this.cb_foldername1.SelectedIndex = 0;
+                }
+                SemaphoreHolder.is_auto_save = false;
+            });
+            thread.Start();
         }
 
         private void ud_mono_wavelength_ValueChanged(object sender, EventArgs e)

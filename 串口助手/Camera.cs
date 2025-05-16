@@ -16,7 +16,9 @@ namespace ASICamera_demo
     #region SemaphoreHolder
     public static class SemaphoreHolder
     {
+
         // Meter类相关
+        public static bool is_0515 = false;
         public static bool is_meter_changed = false;
         public static bool next_ok = false;
         public static bool update_ok = false;
@@ -57,7 +59,7 @@ namespace ASICamera_demo
 
         // 最佳曝光计数
         public static int best_exp_count = 0;
-        public static int get_video_count = 7;
+        public static int get_video_count = 5;
 
         // 手动捕获计数
         public static int manual_count = 0;
@@ -1205,6 +1207,11 @@ namespace ASICamera_demo
                         get_save_mat(width, height, byteArray);
 
                         Bitmap bmp = byte_to_bitmap(width, height, byteArray);
+                        if (SemaphoreHolder.is_0515)
+                        {
+                            SemaphoreHolder.is_0515 = false;
+                            continue;
+                        }
                         // cost: 3ms
                         RefreshUI(bmp);
                         // cost: 34ms
