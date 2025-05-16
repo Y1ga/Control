@@ -2410,7 +2410,6 @@ namespace ASICamera_demo
         
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-         
             int[,] spinBoxValues = new int[,]
             {
                 { 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0 },
@@ -2464,12 +2463,10 @@ namespace ASICamera_demo
             //Thread.Sleep(1000);
         }
 
-
-
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             checkBox_exposureAuto.Checked = !checkBox_exposureAuto.Checked;
-            
+
             if (checkBox_exposureAuto.Checked)
             {
                 exposureAuto();
@@ -2480,7 +2477,7 @@ namespace ASICamera_demo
                 spinBox_exposure.Enabled = true;
                 checkBox2.Checked = checkBox_exposureAuto.Checked;
             }
-   
+
             //checkBox_ExpAuto_CheckedChanged(checkBox_exposureAuto, EventArgs.Empty);
         }
 
