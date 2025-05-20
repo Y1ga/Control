@@ -2416,6 +2416,8 @@ namespace ASICamera_demo
             //checkBox_ExpAuto_CheckedChanged(checkBox_exposureAuto, EventArgs.Empty);
         }
 
+        private void bt_led11_Click(object sender, EventArgs e) { }
+
         private void ud_mono_wavelength_ValueChanged(object sender, EventArgs e)
         {
             // 移动到目标位置
