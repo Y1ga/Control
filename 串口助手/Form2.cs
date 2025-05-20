@@ -2413,18 +2413,85 @@ namespace ASICamera_demo
             SendLEDValues();
         }
 
+        private int[,] LoadSpinBoxValuesFromTxt(string filePath)
+        {
+            try
+            {
+                // 读取所有行
+                string[] lines = File.ReadAllLines(filePath);
+                int rows = lines.Length;
+                int cols = lines[0]
+                    .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                    .Length;
+
+                // 初始化数组
+                int[,] spinBoxValues = new int[rows, cols];
+
+                // 逐行解析
+                for (int i = 0; i < rows; i++)
+                {
+                    string[] values = lines[i]
+                        .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    for (int j = 0; j < cols; j++)
+                    {
+                        spinBoxValues[i, j] = int.Parse(values[j]);
+                    }
+                }
+
+                return spinBoxValues;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"加载失败: {ex.Message}",
+                    "错误",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return null;
+            }
+        }
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int[,] spinBoxValues = new int[,]
+            // 获取 Form1.cs 所在目录的路径
+            string formDirectory = Path.GetDirectoryName(
+                System.Reflection.Assembly.GetExecutingAssembly().Location
+            );
+            string projectRoot = Directory.GetParent(formDirectory).Parent.Parent.FullName; // 向上两级到项目目录
+            string txtFilePath = Path.Combine(projectRoot, "best_encode_mat.txt");
+
+            int[,] spinBoxValues = LoadSpinBoxValuesFromTxt(txtFilePath);
+
+            // 验证数据
+            if (spinBoxValues != null)
             {
-                { 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0 },
-                { 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1 },
-                { 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1 },
-                { 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1 },
-                { 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1 },
-                { 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0 },
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-            };
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < spinBoxValues.GetLength(0); i++)
+                {
+                    for (int j = 0; j < spinBoxValues.GetLength(1); j++)
+                    {
+                        sb.Append(spinBoxValues[i, j] + " ");
+                    }
+                    sb.AppendLine();
+                }
+                //MessageBox.Show(
+                //    sb.ToString(),
+                //    "加载的数据",
+                //    MessageBoxButtons.OK,
+                //    MessageBoxIcon.Information
+                //);
+            }
+            //int[,] spinBoxValues = new int[,]
+            //{
+            //    { 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0 },
+            //    { 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1 },
+            //    { 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1 },
+            //    { 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1 },
+            //    { 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1 },
+            //    { 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0 },
+            //    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            //};
             //spinBoxValues[5, 11] = 0;
             //spinBoxValues[5, 10] = 0;
             // 将第4行（索引3）的值复制到第6行（索引5）
